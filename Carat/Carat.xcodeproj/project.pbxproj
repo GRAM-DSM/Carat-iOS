@@ -56,54 +56,56 @@
 			isa = PBXGroup;
 			children = (
 			);
-			path = Util;
+			name = Util;
+			path = ../Util;
 			sourceTree = "<group>";
 		};
 		9F55E48F24D7C15C002EE250 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ViewModel;
+			name = ViewModel;
+			path = ../ViewModel;
 			sourceTree = "<group>";
 		};
 		9F55E49024D7C165002EE250 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9F7BB0B824D17DD700DF478D /* ViewController.swift */,
 			);
-			path = ViewController;
+			name = ViewController;
+			path = ../ViewController;
 			sourceTree = "<group>";
 		};
 		9F55E49124D7C1A0002EE250 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Model;
+			name = Model;
+			path = ../Model;
 			sourceTree = "<group>";
 		};
 		9F55E49224D7C1AB002EE250 /* Netwoking */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Netwoking;
+			name = Netwoking;
+			path = ../Netwoking;
 			sourceTree = "<group>";
 		};
 		9F55E49324D7C1CC002EE250 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9F7BB0BA24D17DD700DF478D /* Main.storyboard */,
 			);
-			path = UI;
+			name = UI;
+			path = ../UI;
 			sourceTree = "<group>";
 		};
 		9F7BB0A824D17DD700DF478D = {
 			isa = PBXGroup;
 			children = (
 				9F45A17E24D78EF3008D1E39 /* .swiftlint.yml */,
-				9F55E49324D7C1CC002EE250 /* UI */,
-				9F55E49224D7C1AB002EE250 /* Netwoking */,
-				9F55E49124D7C1A0002EE250 /* Model */,
-				9F55E49024D7C165002EE250 /* ViewController */,
-				9F55E48F24D7C15C002EE250 /* ViewModel */,
-				9F55E48D24D7C13D002EE250 /* Util */,
 				9F7BB0B324D17DD700DF478D /* Carat */,
 				9F7BB0B224D17DD700DF478D /* Products */,
 				B6135B401D2D526D2DAECA90 /* Pods */,
@@ -122,10 +124,14 @@
 		9F7BB0B324D17DD700DF478D /* Carat */ = {
 			isa = PBXGroup;
 			children = (
+				9F55E49324D7C1CC002EE250 /* UI */,
+				9F55E49224D7C1AB002EE250 /* Netwoking */,
+				9F55E49124D7C1A0002EE250 /* Model */,
+				9F55E49024D7C165002EE250 /* ViewController */,
+				9F55E48F24D7C15C002EE250 /* ViewModel */,
+				9F55E48D24D7C13D002EE250 /* Util */,
 				9F7BB0B424D17DD700DF478D /* AppDelegate.swift */,
 				9F7BB0B624D17DD700DF478D /* SceneDelegate.swift */,
-				9F7BB0B824D17DD700DF478D /* ViewController.swift */,
-				9F7BB0BA24D17DD700DF478D /* Main.storyboard */,
 				9F7BB0BD24D17DDB00DF478D /* Assets.xcassets */,
 				9F7BB0BF24D17DDB00DF478D /* LaunchScreen.storyboard */,
 				9F7BB0C224D17DDB00DF478D /* Info.plist */,
