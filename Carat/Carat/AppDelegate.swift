@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Carat
 //
-//  Created by 문지수 on 2020/07/29.
-//  Copyright © 2020 문지수. All rights reserved.
+//  Created by 이가영 on 2020/08/07.
+//  Copyright © 2020 이가영. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
