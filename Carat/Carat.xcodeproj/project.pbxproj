@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F31E8C924EB653500731B5E /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E8C824EB653500731B5E /* LogInController.swift */; };
+		9F31E8CB24EB65B300731B5E /* CreateAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E8CA24EB65B300731B5E /* CreateAccountController.swift */; };
+		9F31E8CD24EB65D100731B5E /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E8CC24EB65D100731B5E /* SignUpController.swift */; };
+		9F31E8CF24EB664D00731B5E /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E8CE24EB664D00731B5E /* ProfileController.swift */; };
+		9FC12E8724ED596500844CA0 /* LogInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC12E8624ED596500844CA0 /* LogInModel.swift */; };
 		A877F05EBBE1E0351FB5A4F4 /* Pods_Carat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFF929BE85CBFE253462359 /* Pods_Carat.framework */; };
 		EB5E161024DE7DF30009110A /* 116angmuburi.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB5E160F24DE7DF10009110A /* 116angmuburi.otf */; };
 		EB7DEE5124DD3D50009D0E67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7DEE5024DD3D50009D0E67 /* AppDelegate.swift */; };
@@ -25,6 +30,11 @@
 /* Begin PBXFileReference section */
 		417963373FBBDF743449C897 /* Pods-Carat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carat.debug.xcconfig"; path = "Target Support Files/Pods-Carat/Pods-Carat.debug.xcconfig"; sourceTree = "<group>"; };
 		7BFF929BE85CBFE253462359 /* Pods_Carat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Carat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F31E8C824EB653500731B5E /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
+		9F31E8CA24EB65B300731B5E /* CreateAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountController.swift; sourceTree = "<group>"; };
+		9F31E8CC24EB65D100731B5E /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		9F31E8CE24EB664D00731B5E /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		9FC12E8624ED596500844CA0 /* LogInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModel.swift; sourceTree = "<group>"; };
 		CA16BEA7F2C6B4C66E3B4E00 /* Pods-Carat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carat.release.xcconfig"; path = "Target Support Files/Pods-Carat/Pods-Carat.release.xcconfig"; sourceTree = "<group>"; };
 		EB5E160F24DE7DF10009110A /* 116angmuburi.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 116angmuburi.otf; sourceTree = "<group>"; };
 		EB7DEE4D24DD3D50009D0E67 /* Carat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				EBA5AC7C24DD453F00C8F343 /* TestModel.swift */,
+				9FC12E8624ED596500844CA0 /* LogInModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,6 +148,10 @@
 			isa = PBXGroup;
 			children = (
 				EB7DEE5424DD3D50009D0E67 /* ViewController.swift */,
+				9F31E8C824EB653500731B5E /* LogInController.swift */,
+				9F31E8CA24EB65B300731B5E /* CreateAccountController.swift */,
+				9F31E8CC24EB65D100731B5E /* SignUpController.swift */,
+				9F31E8CE24EB664D00731B5E /* ProfileController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -277,9 +292,14 @@
 			files = (
 				EBA5AC7F24DD455500C8F343 /* NetworkingAPI.swift in Sources */,
 				EBA5AC8324DD45AA00C8F343 /* TestUtil.swift in Sources */,
+				9F31E8CD24EB65D100731B5E /* SignUpController.swift in Sources */,
+				9F31E8C924EB653500731B5E /* LogInController.swift in Sources */,
 				EBA5AC7D24DD453F00C8F343 /* TestModel.swift in Sources */,
+				9F31E8CF24EB664D00731B5E /* ProfileController.swift in Sources */,
 				EBA5AC8124DD456100C8F343 /* TestViewModel.swift in Sources */,
+				9F31E8CB24EB65B300731B5E /* CreateAccountController.swift in Sources */,
 				EB7DEE5524DD3D50009D0E67 /* ViewController.swift in Sources */,
+				9FC12E8724ED596500844CA0 /* LogInModel.swift in Sources */,
 				EB7DEE5124DD3D50009D0E67 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
