@@ -21,6 +21,8 @@
 		EBA5AC7F24DD455500C8F343 /* NetworkingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA5AC7E24DD455500C8F343 /* NetworkingAPI.swift */; };
 		EBA5AC8124DD456100C8F343 /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA5AC8024DD456100C8F343 /* TestViewModel.swift */; };
 		EBA5AC8324DD45AA00C8F343 /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA5AC8224DD45AA00C8F343 /* TestUtil.swift */; };
+		EBBDFDF424EE5B66003C75BF /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBDFDF324EE5B66003C75BF /* HTTPClient.swift */; };
+		EBBDFDF624EE6299003C75BF /* MainHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBBDFDF524EE6299003C75BF /* MainHome.storyboard */; };
 		EBC0EDC724E28BA400FFFF3F /* MainHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC0EDC524E28BA400FFFF3F /* MainHomeTableViewCell.swift */; };
 		EBC0EDC824E28BA400FFFF3F /* MainHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBC0EDC624E28BA400FFFF3F /* MainHomeTableViewCell.xib */; };
 		EBC0EDCA24E28C8700FFFF3F /* MainHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC0EDC924E28C8700FFFF3F /* MainHomeViewController.swift */; };
@@ -49,6 +51,8 @@
 		EBA5AC7E24DD455500C8F343 /* NetworkingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingAPI.swift; sourceTree = "<group>"; };
 		EBA5AC8024DD456100C8F343 /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
 		EBA5AC8224DD45AA00C8F343 /* TestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
+		EBBDFDF324EE5B66003C75BF /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		EBBDFDF524EE6299003C75BF /* MainHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainHome.storyboard; sourceTree = "<group>"; };
 		EBC0EDC524E28BA400FFFF3F /* MainHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainHomeTableViewCell.swift; path = Carat/Util/MainHomeTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		EBC0EDC624E28BA400FFFF3F /* MainHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainHomeTableViewCell.xib; path = Carat/Util/MainHomeTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		EBC0EDC924E28C8700FFFF3F /* MainHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				EB7DEE5624DD3D50009D0E67 /* Main.storyboard */,
+				EBBDFDF524EE6299003C75BF /* MainHome.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				EBA5AC7E24DD455500C8F343 /* NetworkingAPI.swift */,
+				EBBDFDF324EE5B66003C75BF /* HTTPClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -241,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBBDFDF624EE6299003C75BF /* MainHome.storyboard in Resources */,
 				EB5E161024DE7DF30009110A /* 116angmuburi.otf in Resources */,
 				EBA5AC7524DD3EA100C8F343 /* .swiftlint.yml in Resources */,
 				EBE5CB4324DEE7AE00C22BB0 /* 116angmuburi.ttf in Resources */,
@@ -310,6 +317,7 @@
 				EBC0EDCA24E28C8700FFFF3F /* MainHomeViewController.swift in Sources */,
 				EBC1EA1B24ECADB700D340E0 /* PostCaringModel.swift in Sources */,
 				EBA5AC8124DD456100C8F343 /* TestViewModel.swift in Sources */,
+				EBBDFDF424EE5B66003C75BF /* HTTPClient.swift in Sources */,
 				EBC0EDCC24E2B16900FFFF3F /* MainHomeModel.swift in Sources */,
 				EB7DEE5524DD3D50009D0E67 /* ViewController.swift in Sources */,
 				EB7DEE5124DD3D50009D0E67 /* AppDelegate.swift in Sources */,
