@@ -11,12 +11,12 @@
 		9F31E8CB24EB65B300731B5E /* CreateAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E8CA24EB65B300731B5E /* CreateAccountController.swift */; };
 		9F31E8CD24EB65D100731B5E /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E8CC24EB65D100731B5E /* SignUpController.swift */; };
 		9F31E8CF24EB664D00731B5E /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E8CE24EB664D00731B5E /* ProfileController.swift */; };
+		9F4D3CCF24EDF62200D5D5B0 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F4D3CCE24EDF62200D5D5B0 /* Auth.storyboard */; };
 		9FC12E8724ED596500844CA0 /* LogInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC12E8624ED596500844CA0 /* LogInModel.swift */; };
 		A877F05EBBE1E0351FB5A4F4 /* Pods_Carat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFF929BE85CBFE253462359 /* Pods_Carat.framework */; };
 		EB5E161024DE7DF30009110A /* 116angmuburi.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB5E160F24DE7DF10009110A /* 116angmuburi.otf */; };
 		EB7DEE5124DD3D50009D0E67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7DEE5024DD3D50009D0E67 /* AppDelegate.swift */; };
 		EB7DEE5524DD3D50009D0E67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7DEE5424DD3D50009D0E67 /* ViewController.swift */; };
-		EB7DEE5824DD3D50009D0E67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB7DEE5624DD3D50009D0E67 /* Main.storyboard */; };
 		EB7DEE5A24DD3D55009D0E67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB7DEE5924DD3D55009D0E67 /* Assets.xcassets */; };
 		EB7DEE5D24DD3D55009D0E67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB7DEE5B24DD3D55009D0E67 /* LaunchScreen.storyboard */; };
 		EBA5AC7524DD3EA100C8F343 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EBA5AC7424DD3EA100C8F343 /* .swiftlint.yml */; };
@@ -34,13 +34,13 @@
 		9F31E8CA24EB65B300731B5E /* CreateAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountController.swift; sourceTree = "<group>"; };
 		9F31E8CC24EB65D100731B5E /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		9F31E8CE24EB664D00731B5E /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		9F4D3CCE24EDF62200D5D5B0 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		9FC12E8624ED596500844CA0 /* LogInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModel.swift; sourceTree = "<group>"; };
 		CA16BEA7F2C6B4C66E3B4E00 /* Pods-Carat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carat.release.xcconfig"; path = "Target Support Files/Pods-Carat/Pods-Carat.release.xcconfig"; sourceTree = "<group>"; };
 		EB5E160F24DE7DF10009110A /* 116angmuburi.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 116angmuburi.otf; sourceTree = "<group>"; };
 		EB7DEE4D24DD3D50009D0E67 /* Carat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB7DEE5024DD3D50009D0E67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB7DEE5424DD3D50009D0E67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EB7DEE5724DD3D50009D0E67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EB7DEE5924DD3D55009D0E67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB7DEE5C24DD3D55009D0E67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB7DEE5E24DD3D55009D0E67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		EBA5AC7624DD44F400C8F343 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				EB7DEE5624DD3D50009D0E67 /* Main.storyboard */,
+				9F4D3CCE24EDF62200D5D5B0 /* Auth.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -237,7 +237,7 @@
 				EBE5CB4324DEE7AE00C22BB0 /* 116angmuburi.ttf in Resources */,
 				EB7DEE5D24DD3D55009D0E67 /* LaunchScreen.storyboard in Resources */,
 				EB7DEE5A24DD3D55009D0E67 /* Assets.xcassets in Resources */,
-				EB7DEE5824DD3D50009D0E67 /* Main.storyboard in Resources */,
+				9F4D3CCF24EDF62200D5D5B0 /* Auth.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,14 +307,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EB7DEE5624DD3D50009D0E67 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EB7DEE5724DD3D50009D0E67 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EB7DEE5B24DD3D55009D0E67 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
