@@ -77,7 +77,7 @@ enum NetworkingAPI {
             let renewalToken: String = "tokenValue"
             let userDefault = UserDefaults.standard
             userDefault.set(renewalToken, forKey: "refreshToken")
-            userDefault.synchronize()
+            userDefault.synchronize(  )
             guard let token = userDefault.string(forKey: "refreshToken") else { return nil }
             return ["Authorization" : "Bearer" + token]
             
@@ -90,6 +90,26 @@ enum NetworkingAPI {
             return ["Authorization" : "Bearer" + token]
         }
     }
+    
+    var parameters: [String: Any]{
+        switch self {
+        case .signIn(let name, let email, let pw):
+            return ["name": name, "email": email, "pw": pw]
+        case .Login(let pw, let email):
+            return ["email": email, "pw": pw]
+        case .timeLine(let size, let last_caring_id):
+            return ["size": size, "last_caring_id": last_caring_id]
+        case .timeLineOfProfile(let email, let size, let last_caring_id):
+            return ["email": email, "size": size, "last_caring_id": last_caring_id]
+        case .createCaring(let caring):
+            return ["caring": caring]
+        case .createRecaring(let id), .cancleRecaring(let id):
+            return ["id": id]
+        default:
+            return [:]
+        }
+    }
+
     
     
 }
