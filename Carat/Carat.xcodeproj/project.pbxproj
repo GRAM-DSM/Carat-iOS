@@ -11,8 +11,8 @@
 		9F31E8CB24EB65B300731B5E /* CreateAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E8CA24EB65B300731B5E /* CreateAccountController.swift */; };
 		9F31E8CD24EB65D100731B5E /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E8CC24EB65D100731B5E /* SignUpController.swift */; };
 		9F31E8CF24EB664D00731B5E /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31E8CE24EB664D00731B5E /* ProfileController.swift */; };
-		9F4D3CCF24EDF62200D5D5B0 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F4D3CCE24EDF62200D5D5B0 /* Auth.storyboard */; };
 		9FC12E8724ED596500844CA0 /* LogInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC12E8624ED596500844CA0 /* LogInModel.swift */; };
+		9FCA21B824EE1D6900C1DE73 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FCA21B724EE1D6900C1DE73 /* Auth.storyboard */; };
 		A877F05EBBE1E0351FB5A4F4 /* Pods_Carat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFF929BE85CBFE253462359 /* Pods_Carat.framework */; };
 		EB5E161024DE7DF30009110A /* 116angmuburi.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB5E160F24DE7DF10009110A /* 116angmuburi.otf */; };
 		EB7DEE5124DD3D50009D0E67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7DEE5024DD3D50009D0E67 /* AppDelegate.swift */; };
@@ -34,8 +34,8 @@
 		9F31E8CA24EB65B300731B5E /* CreateAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountController.swift; sourceTree = "<group>"; };
 		9F31E8CC24EB65D100731B5E /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		9F31E8CE24EB664D00731B5E /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		9F4D3CCE24EDF62200D5D5B0 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		9FC12E8624ED596500844CA0 /* LogInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModel.swift; sourceTree = "<group>"; };
+		9FCA21B724EE1D6900C1DE73 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		CA16BEA7F2C6B4C66E3B4E00 /* Pods-Carat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carat.release.xcconfig"; path = "Target Support Files/Pods-Carat/Pods-Carat.release.xcconfig"; sourceTree = "<group>"; };
 		EB5E160F24DE7DF10009110A /* 116angmuburi.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 116angmuburi.otf; sourceTree = "<group>"; };
 		EB7DEE4D24DD3D50009D0E67 /* Carat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,7 +122,7 @@
 		EBA5AC7624DD44F400C8F343 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				9F4D3CCE24EDF62200D5D5B0 /* Auth.storyboard */,
+				9FCA21B724EE1D6900C1DE73 /* Auth.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -232,12 +232,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FCA21B824EE1D6900C1DE73 /* Auth.storyboard in Resources */,
 				EB5E161024DE7DF30009110A /* 116angmuburi.otf in Resources */,
 				EBA5AC7524DD3EA100C8F343 /* .swiftlint.yml in Resources */,
 				EBE5CB4324DEE7AE00C22BB0 /* 116angmuburi.ttf in Resources */,
 				EB7DEE5D24DD3D55009D0E67 /* LaunchScreen.storyboard in Resources */,
 				EB7DEE5A24DD3D55009D0E67 /* Assets.xcassets in Resources */,
-				9F4D3CCF24EDF62200D5D5B0 /* Auth.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
