@@ -36,6 +36,7 @@ Naming
 
 - camelCase
 - UIKit등 모든 이름 풀네임으로(ex.signInButton, backButton)
+- 파일명은 첫글자 무조건 대문자
 
 코드 정리
 
