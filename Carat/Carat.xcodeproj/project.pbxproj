@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A877F05EBBE1E0351FB5A4F4 /* Pods_Carat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFF929BE85CBFE253462359 /* Pods_Carat.framework */; };
 		EB0D3A5124E3821800B971EE /* MainHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0D3A5024E3821800B971EE /* MainHomeViewModel.swift */; };
+		EB41BAA024EF5479009964CA /* MainHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB41BA9F24EF5478009964CA /* MainHome.storyboard */; };
 		EB5E161024DE7DF30009110A /* 116angmuburi.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB5E160F24DE7DF10009110A /* 116angmuburi.otf */; };
 		EB775A7D24E60BBA00102C04 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB775A7C24E60BBA00102C04 /* ViewModelType.swift */; };
 		EB7DEE5124DD3D50009D0E67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7DEE5024DD3D50009D0E67 /* AppDelegate.swift */; };
@@ -35,6 +36,7 @@
 		7BFF929BE85CBFE253462359 /* Pods_Carat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Carat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA16BEA7F2C6B4C66E3B4E00 /* Pods-Carat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carat.release.xcconfig"; path = "Target Support Files/Pods-Carat/Pods-Carat.release.xcconfig"; sourceTree = "<group>"; };
 		EB0D3A5024E3821800B971EE /* MainHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeViewModel.swift; sourceTree = "<group>"; };
+		EB41BA9F24EF5478009964CA /* MainHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainHome.storyboard; sourceTree = "<group>"; };
 		EB5E160F24DE7DF10009110A /* 116angmuburi.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 116angmuburi.otf; sourceTree = "<group>"; };
 		EB775A7C24E60BBA00102C04 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		EB7DEE4D24DD3D50009D0E67 /* Carat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +89,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EB41BA9E24EF5464009964CA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				EB41BA9F24EF5478009964CA /* MainHome.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		EB7DEE4424DD3D50009D0E67 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 		EB7DEE4F24DD3D50009D0E67 /* Carat */ = {
 			isa = PBXGroup;
 			children = (
+				EB41BA9E24EF5464009964CA /* UI */,
 				EBA5AC7B24DD451000C8F343 /* Util */,
 				EBA5AC7A24DD450C00C8F343 /* ViewModel */,
 				EBA5AC7924DD450700C8F343 /* ViewController */,
@@ -236,6 +247,7 @@
 				EB5E161024DE7DF30009110A /* 116angmuburi.otf in Resources */,
 				EBA5AC7524DD3EA100C8F343 /* .swiftlint.yml in Resources */,
 				EBE5CB4324DEE7AE00C22BB0 /* 116angmuburi.ttf in Resources */,
+				EB41BAA024EF5479009964CA /* MainHome.storyboard in Resources */,
 				EB7DEE5D24DD3D55009D0E67 /* LaunchScreen.storyboard in Resources */,
 				EB7DEE5A24DD3D55009D0E67 /* Assets.xcassets in Resources */,
 				EBC0EDC824E28BA400FFFF3F /* MainHomeTableViewCell.xib in Resources */,
