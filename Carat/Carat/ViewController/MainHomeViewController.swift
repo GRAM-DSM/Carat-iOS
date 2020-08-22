@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 
 class MainHomeViewController: UITableViewController {
-
+    
     private let viewModel = MainHomeViewModel()
     public var Model = [MainHomeModel]()
     private let httpClient = HTTPClient()
@@ -19,10 +19,10 @@ class MainHomeViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        Model.append(MainHomeModel(profileImage: nil, profileName: "뫙뫙", profileID: "#$@#ㅆ", mainText: "이야 오늘경기 정말", uploadImageView: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg"], timeFromCaring: "!3;532", recaringSum: 123, likeSum: 345, recaring: false, carat: false))
-        Model.append(MainHomeModel(profileImage: nil, profileName: "뫙", profileID: "@ㄹㅇㄴ라", mainText: "이야…. 오늘 경기 정말 실화냐? 처음에 축구였다가 농구로 바뀌고 갑자기 또 축구로 바뀌더니 비가와서 농구로 바뀌고, 그렇게 농구 확정이라고 했는데 비가 안와서 축구라니…. 정말 가슴이 웅장해진다….", uploadImageView: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg"], timeFromCaring: "234",recaringSum: 123, likeSum: 345, recaring: true, carat: false))
-        Model.append(MainHomeModel(profileImage: nil, profileName: "뫙", profileID: "@ㄹㅇㄴ라", mainText: "이야…. 오늘 경기 정말 실화냐? 처음에 축구였다가 농구로 바뀌고 갑자기 또 축구로 바뀌더니 비가와서 농구로 바뀌고, 그렇게 농구 확정이라고 했는데 비가 안와서 축구라니…. 정말 가슴이 웅장해진다….", uploadImageView: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg"], timeFromCaring: "234", recaringSum: 234, likeSum: 44, recaring: false, carat: false))
+        
+        Model.append(MainHomeModel(profileImage: nil, profileName: "뫙뫙", profileID: "#$@#ㅆ", mainText: "이야 오늘경기 정말", uploadImageView: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg"], post_time: "!3;532", recaringSum: 123, likeSum: 345, recaring: false, carat: false))
+        Model.append(MainHomeModel(profileImage: nil, profileName: "뫙", profileID: "@ㄹㅇㄴ라", mainText: "이야…. 오늘 경기 정말 실화냐? 처음에 축구였다가 농구로 바뀌고 갑자기 또 축구로 바뀌더니 비가와서 농구로 바뀌고, 그렇게 농구 확정이라고 했는데 비가 안와서 축구라니…. 정말 가슴이 웅장해진다….", uploadImageView: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg"], post_time: "234",recaringSum: 123, likeSum: 345, recaring: true, carat: false))
+        Model.append(MainHomeModel(profileImage: nil, profileName: "뫙", profileID: "@ㄹㅇㄴ라", mainText: "이야…. 오늘 경기 정말 실화냐? 처음에 축구였다가 농구로 바뀌고 갑자기 또 축구로 바뀌더니 비가와서 농구로 바뀌고, 그렇게 농구 확정이라고 했는데 비가 안와서 축구라니…. 정말 가슴이 웅장해진다….", uploadImageView: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg"], post_time: "234", recaringSum: 234, likeSum: 44, recaring: false, carat: false))
         
         self.viewModel.firstLoadCaring()
         self.tableView.reloadData()
@@ -44,7 +44,7 @@ class MainHomeViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-
+    
     
     //MARK: UITableViewDelegate, UITableViewDataSource
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,7 +81,7 @@ class MainHomeViewController: UITableViewController {
         cell.likeButton.isSelected = Model[indexPath.row].carat
         cell.recaringSumLabel.text = String(Model[indexPath.row].recaringSum)
         cell.likeSumLabel.text = String(Model[indexPath.row].likeSum)
-        cell.timeFromPostingLabel.text = Model[indexPath.row].timeFromCaring
+        cell.timeFromPostingLabel.text = Model[indexPath.row].post_time
         
         return cell
     }
@@ -93,7 +93,7 @@ class MainHomeViewController: UITableViewController {
         
         self.navigationController?.pushViewController(pushVC, animated: true)
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.Model.count
     }
@@ -109,12 +109,12 @@ class MainHomeViewController: UITableViewController {
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
 }

@@ -39,7 +39,6 @@ class MainHomeTableViewCell: UITableViewCell {
     private let disposebag = DisposeBag()
     
     @IBAction func favoriteCarat(_ sendder: UIButton){
-        
         if !favorited {
             favorited = true
             likeButton.isSelected = favorited
