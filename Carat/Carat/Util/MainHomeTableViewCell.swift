@@ -35,11 +35,13 @@ class MainHomeTableViewCell: UITableViewCell {
     private var recaringSum: Int = 0
     private var likeSum: Int = 0
     
-    private let mainHomeViewModel = MainHomeViewModel()
+    private let viewModel = MainHomeViewModel()
     private let disposebag = DisposeBag()
     
     @IBAction func favoriteCarat(_ sendder: UIButton){
+        
         if !favorited {
+            viewModel.
             favorited = true
             likeButton.isSelected = favorited
             recaringSum += 1

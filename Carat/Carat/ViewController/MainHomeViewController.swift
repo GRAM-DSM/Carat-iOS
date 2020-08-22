@@ -24,6 +24,7 @@ class MainHomeViewController: UITableViewController {
         Model.append(MainHomeModel(profileImage: nil, profileName: "뫙", profileID: "@ㄹㅇㄴ라", mainText: "이야…. 오늘 경기 정말 실화냐? 처음에 축구였다가 농구로 바뀌고 갑자기 또 축구로 바뀌더니 비가와서 농구로 바뀌고, 그렇게 농구 확정이라고 했는데 비가 안와서 축구라니…. 정말 가슴이 웅장해진다….", uploadImageView: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg"], timeFromCaring: "234",recaringSum: 123, likeSum: 345, recaring: true, carat: false))
         Model.append(MainHomeModel(profileImage: nil, profileName: "뫙", profileID: "@ㄹㅇㄴ라", mainText: "이야…. 오늘 경기 정말 실화냐? 처음에 축구였다가 농구로 바뀌고 갑자기 또 축구로 바뀌더니 비가와서 농구로 바뀌고, 그렇게 농구 확정이라고 했는데 비가 안와서 축구라니…. 정말 가슴이 웅장해진다….", uploadImageView: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg"], timeFromCaring: "234", recaringSum: 234, likeSum: 44, recaring: false, carat: false))
         
+        self.viewModel.firstLoadCaring()
         self.tableView.reloadData()
         let nib = UINib(nibName: "MainHomeTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "mainHomeCell")
@@ -32,25 +33,18 @@ class MainHomeViewController: UITableViewController {
         refreshControl?.attributedTitle = NSAttributedString(string: "당겨서 새로고침")
         refreshControl?.addTarget(self, action: #selector(MainHomeViewController.refresh), for: .valueChanged)
     }
-       
-    @IBAction func moreCaringView(_ sender: UIButton){
-        
-        self.tableView.reloadData()
-    }
-    
-    func loadFreshCaring(){
-        
-    }
-    
-    func loadCaring(){
-        
-    }
     
     @objc func refresh(){
         print("refresh")
-        self.loadFreshCaring()
+        self.viewModel.loadFreshCaring()
         self.refreshControl?.endRefreshing()
     }
+    
+    @IBAction func moreCaringView(_ sender: UIButton){
+        self.tableView.reloadData()
+    }
+    
+
     
     //MARK: UITableViewDelegate, UITableViewDataSource
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
