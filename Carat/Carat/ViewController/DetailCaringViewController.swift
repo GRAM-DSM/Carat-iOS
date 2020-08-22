@@ -19,16 +19,28 @@ class DetailCaringViewController: UIViewController {
     @IBOutlet weak var timeFormatterLabel: UILabel!
     @IBOutlet weak var recaringButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var recaringSumButton: UILabel!
+    @IBOutlet weak var likeSumButton: UILabel!
+    
+    var detailModel: MainHomeModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        circleOfImage(profileImageView)
+        profileImageView.image = UIImage(named: (detailModel.profileImage)!)
+        profileNameLabel?.text = detailModel?.profileName
+        profileIDLabel?.text = detailModel?.profileID
+        mainTextView?.text = detailModel?.mainText
+        timeFormatterLabel?.text = detailModel?.timeFromCaring
+        
+        recaringButton.isSelected = detailModel.recaring
+        likeButton.isSelected = detailModel.carat
+        
+        recaringSumButton.text = String(detailModel.recaringSum)
+        likeSumButton.text = String(detailModel.likeSum)
+        circleOfImage(profileImageView!)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        mainTextView.sizeToFit()
-    }
 
     /*
     // MARK: - Navigation

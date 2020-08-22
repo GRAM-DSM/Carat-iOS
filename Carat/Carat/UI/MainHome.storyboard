@@ -15,6 +15,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="KRV-m5-udW">
+                            <rect key="frame" x="0.0" y="99.5" width="414" height="88"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6DR-rJ-kaB">
+                                    <rect key="frame" x="169" y="11" width="78" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="see more..">
+                                                <attributes>
+                                                    <font key="NSFont" size="24" name="116angmuburi"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                    </state>
+                                    <connections>
+                                        <action selector="moreCaringView:" destination="HMD-de-dFe" eventType="valueChanged" id="VQm-Bl-WuM"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LY-c1-iHl">
+                                    <rect key="frame" x="121" y="52" width="173" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="대단해요! 모든 캐링을 다 보셨군요!">
+                                            <attributes>
+                                                <font key="NSFont" size="17" name="116angmuburi"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainHomeCell" id="671-xN-GtR" customClass="MainHomeTableViewCell" customModule="Carat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -40,7 +75,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cc1-e0-ikO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1852" y="161"/>
+            <point key="canvasLocation" x="1850.7246376811595" y="160.71428571428569"/>
         </scene>
         <!--크라켄-->
         <scene sceneID="8uh-BQ-kVe">
@@ -50,6 +85,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9CM-ng-tPM">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yj8-em-XuG">
+                                        <rect key="frame" x="17" y="439" width="380" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="7Hb-T5-XfZ"/>
+                                            <constraint firstAttribute="width" constant="380" id="Noy-LA-4ym"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9jM-6Q-Dkt">
+                                        <rect key="frame" x="17" y="627" width="380" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="380" id="b6x-pp-r6S"/>
+                                            <constraint firstAttribute="height" constant="180" id="ngn-dg-8aJ"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Ner-jr-E38"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="QfP-EW-THW"/>
+                            </scrollView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfile" translatesAutoresizingMaskIntoConstraints="NO" id="XIo-oa-OAC">
                                 <rect key="frame" x="20" y="108" width="80" height="80"/>
                                 <constraints>
@@ -170,13 +226,17 @@
                             <constraint firstItem="XIo-oa-OAC" firstAttribute="leading" secondItem="Tbj-dp-avZ" secondAttribute="leading" constant="20" id="6ap-fd-uOW"/>
                             <constraint firstItem="d04-k6-s5g" firstAttribute="trailing" secondItem="Tbj-dp-avZ" secondAttribute="trailing" id="Es9-44-EB6"/>
                             <constraint firstItem="XIo-oa-OAC" firstAttribute="top" secondItem="Tbj-dp-avZ" secondAttribute="top" constant="20" id="G1S-p3-dae"/>
+                            <constraint firstItem="9CM-ng-tPM" firstAttribute="leading" secondItem="Tbj-dp-avZ" secondAttribute="leading" id="GDf-v2-SpP"/>
+                            <constraint firstItem="9CM-ng-tPM" firstAttribute="top" secondItem="Tbj-dp-avZ" secondAttribute="top" id="GX1-xg-0E8"/>
                             <constraint firstItem="d04-k6-s5g" firstAttribute="centerX" secondItem="2PZ-pM-ary" secondAttribute="centerX" id="Ocl-0d-Kz2"/>
                             <constraint firstItem="Zde-eo-fv4" firstAttribute="leading" secondItem="XIo-oa-OAC" secondAttribute="trailing" constant="20" id="Oj2-h4-n1L"/>
                             <constraint firstItem="0cg-5z-giK" firstAttribute="centerX" secondItem="2PZ-pM-ary" secondAttribute="centerX" id="ZM8-0B-15B"/>
                             <constraint firstItem="Zde-eo-fv4" firstAttribute="top" secondItem="5a5-lk-Ee3" secondAttribute="bottom" constant="8" id="bQ0-37-CSc"/>
                             <constraint firstItem="0cg-5z-giK" firstAttribute="top" secondItem="21c-vL-M6i" secondAttribute="bottom" constant="8" id="cFi-ls-yag"/>
+                            <constraint firstItem="9CM-ng-tPM" firstAttribute="bottom" secondItem="Tbj-dp-avZ" secondAttribute="bottom" id="cdc-H5-AdW"/>
                             <constraint firstItem="5a5-lk-Ee3" firstAttribute="top" secondItem="Tbj-dp-avZ" secondAttribute="top" constant="20" id="ce9-5q-kJg"/>
                             <constraint firstItem="d04-k6-s5g" firstAttribute="leading" secondItem="Tbj-dp-avZ" secondAttribute="leading" id="l81-QV-rDL"/>
+                            <constraint firstItem="9CM-ng-tPM" firstAttribute="trailing" secondItem="Tbj-dp-avZ" secondAttribute="trailing" id="llV-tz-EQw"/>
                             <constraint firstItem="d04-k6-s5g" firstAttribute="top" secondItem="0cg-5z-giK" secondAttribute="bottom" constant="8" id="pe6-YB-hgc"/>
                             <constraint firstItem="21c-vL-M6i" firstAttribute="top" secondItem="Tbj-dp-avZ" secondAttribute="top" constant="116" id="qGm-z3-UXs"/>
                             <constraint firstItem="5a5-lk-Ee3" firstAttribute="leading" secondItem="XIo-oa-OAC" secondAttribute="trailing" constant="20" id="qSW-dh-w05"/>
@@ -188,18 +248,20 @@
                     <connections>
                         <outlet property="dateFormatterLabel" destination="D1N-MM-c9r" id="6rd-wP-ytD"/>
                         <outlet property="likeButton" destination="r1a-F5-XBg" id="hIQ-jF-s8b"/>
+                        <outlet property="likeSumButton" destination="Z1R-tT-n1G" id="XwW-Ak-36y"/>
                         <outlet property="mainTextView" destination="21c-vL-M6i" id="ITl-bD-6Kk"/>
                         <outlet property="profileIDLabel" destination="Zde-eo-fv4" id="Zoy-qR-fMd"/>
                         <outlet property="profileImageView" destination="XIo-oa-OAC" id="hBf-F5-uqM"/>
                         <outlet property="profileNameLabel" destination="5a5-lk-Ee3" id="8Ue-pJ-JeH"/>
                         <outlet property="recaringButton" destination="XpY-ZD-rEx" id="MLO-PC-mGB"/>
+                        <outlet property="recaringSumButton" destination="c3G-tK-Wh1" id="2nm-TP-uRe"/>
                         <outlet property="timeFormatterLabel" destination="WOX-1x-QeM" id="EEd-ki-zOI"/>
                         <outlet property="uploadImageView" destination="0cg-5z-giK" id="W3K-pL-ys9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="isi-f1-esh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2677" y="161"/>
+            <point key="canvasLocation" x="2676.811594202899" y="160.71428571428569"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yzj-gu-hOb">
