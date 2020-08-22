@@ -41,7 +41,6 @@ class MainHomeTableViewCell: UITableViewCell {
     @IBAction func favoriteCarat(_ sendder: UIButton){
         
         if !favorited {
-            viewModel.
             favorited = true
             likeButton.isSelected = favorited
             recaringSum += 1
