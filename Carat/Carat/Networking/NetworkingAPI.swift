@@ -37,6 +37,7 @@ enum NetworkingAPI {
     case createFolowing(_ email: String)
     case cancleFollowing(_ email: String)
     
+    //MARK: path
     var path: String {
         switch self {
         case .Login, .renewalToken:
@@ -67,7 +68,6 @@ enum NetworkingAPI {
     }
     
     //MARK: headers
-    //아직 미완
     var headers: [String: String]? {
         switch self {
         case .Login:
@@ -91,6 +91,7 @@ enum NetworkingAPI {
         }
     }
     
+    //MARK: parameters
     var parameters: [String: Any]{
         switch self {
         case .signIn(let name, let email, let pw):
@@ -109,8 +110,16 @@ enum NetworkingAPI {
             return [:]
         }
     }
+}
 
-    
-    
+struct Token {
+    static var token: String?{
+        get{
+            return UserDefaults.standard.string(forKey: "Token")
+        }
+        set{
+            UserDefaults.standard.set(newValue, forKey: "Token")
+        }
+    }
 }
 

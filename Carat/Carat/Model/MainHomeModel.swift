@@ -8,13 +8,16 @@
 
 import Foundation
 
-class MainHomeModel: Codable{ //글 썻을 때 ~
-    var profileImage: String
+struct MainHomeModel: Codable{ //글 썻을 때 ~
+    var profileImage: String?
     var profileName: String //별명
     var profileID: String //@아이디
     var mainText: String //본문
-    var imageView: String
-    var timeFromCaring: String //올린지 얼마됐는지
+    var uploadImageView: [String?]
+    var post_time: String //올린지 얼마됐는지
+    
+    var recaringSum: Int
+    var likeSum: Int
     
     var recaring: Bool //리캐럿
     var carat: Bool //좋아요

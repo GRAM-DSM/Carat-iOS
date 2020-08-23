@@ -10,21 +10,59 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class MainHomeViewModel{
+class MainHomeViewModel: ViewModelType{
+    
+    private let httpClient = HTTPClient()
+    
+    struct Input {
+        let updateFeed: Signal<Void>
+        let selectProfile: Signal<Void>
+        let selectTableViewCell: Signal<Void>
+        let selectRecaring: Signal<Void>
+        let selectLike: Signal<Void>
+    }
+    
+    struct Output {
+        let goToDetailCaring: Signal<Void>
+        let goToUserProfile: Signal<Void>
+        let result: Signal<Void>
+    }
+    
+    func loadFreshCaring(){
+//        httpClient.get(NetworkingAPI.timeLine(4, 1)).responseJSON { [weak self] (response) in
+//            guard self != nil else {return}
 //
-//    struct Input {
-//        let updateFeed: Signal<Void>
-//        let selectProfile: Signal<Void>
-//        let selectTableViewCell: Signal<Void>
-//    }
+//            switch response.response?.statusCode{
 //
-//    struct Output {
-//        let goToDetailCaring: Signal<Void>
-//        let goToUserProfile: Signal<Void>
-//        let result: Signal<Void>
-//    }
+//            }
+//        }
+    }
+        
+    func firstLoadCaring(){
+//        httpClient.get(NetworkingAPI.timeLine(4, 0)).responseJSON { [weak self] (response) in
+//            guard self != nil else {return}
 //
-//    func transform(input: MainHomeViewModel.Input) -> MainHomeViewModel.Output{
-//    }
-//
+//            switch response.response?.statusCode {
+//            case 200:
+//                print("loadCaring succesful")
+//                print(response)
+//                guard let data = try? JSONDecoder().decode(MainHomeModel, from: ) else { return }
+//                return data
+//            case 400:
+//                print("bad request")
+//            case 401:
+//                print("your request has been forbidden")
+//            default:
+//                print("default")
+//            }
+//        }
+    }
+    func createRecaring(){
+        
+    }
+    
+    func cancleRecaring(){
+        
+    }
+        
 }
