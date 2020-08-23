@@ -23,6 +23,7 @@
 		EB7DEE5524DD3D50009D0E67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7DEE5424DD3D50009D0E67 /* ViewController.swift */; };
 		EB7DEE5A24DD3D55009D0E67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB7DEE5924DD3D55009D0E67 /* Assets.xcassets */; };
 		EB7DEE5D24DD3D55009D0E67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB7DEE5B24DD3D55009D0E67 /* LaunchScreen.storyboard */; };
+		EB7DF25C24F25D600025198D /* PostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7DF25B24F25D600025198D /* PostingViewController.swift */; };
 		EBA5AC7524DD3EA100C8F343 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EBA5AC7424DD3EA100C8F343 /* .swiftlint.yml */; };
 		EBA5AC7D24DD453F00C8F343 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA5AC7C24DD453F00C8F343 /* TestModel.swift */; };
 		EBA5AC7F24DD455500C8F343 /* NetworkingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA5AC7E24DD455500C8F343 /* NetworkingAPI.swift */; };
@@ -59,6 +60,7 @@
 		EB7DEE5924DD3D55009D0E67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB7DEE5C24DD3D55009D0E67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB7DEE5E24DD3D55009D0E67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB7DF25B24F25D600025198D /* PostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingViewController.swift; sourceTree = "<group>"; };
 		EBA5AC7424DD3EA100C8F343 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EBA5AC7C24DD453F00C8F343 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		EBA5AC7E24DD455500C8F343 /* NetworkingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingAPI.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				9F31E8CE24EB664D00731B5E /* ProfileController.swift */,
 				EBC1EA1824EA651700D340E0 /* DetailCaringViewController.swift */,
 				EBC0EDC924E28C8700FFFF3F /* MainHomeViewController.swift */,
+				EB7DF25B24F25D600025198D /* PostingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				EBA5AC8324DD45AA00C8F343 /* TestUtil.swift in Sources */,
 				9F31E8CD24EB65D100731B5E /* SignUpController.swift in Sources */,
 				9F31E8C924EB653500731B5E /* LogInController.swift in Sources */,
+				EB7DF25C24F25D600025198D /* PostingViewController.swift in Sources */,
 				EBA5AC7D24DD453F00C8F343 /* TestModel.swift in Sources */,
 				9F31E8CF24EB664D00731B5E /* ProfileController.swift in Sources */,
 				EBA5AC8124DD456100C8F343 /* TestViewModel.swift in Sources */,
