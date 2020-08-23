@@ -35,6 +35,8 @@ class DetailCaringViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
             
+        navigationController?.navigationBar.barTintColor = .white
+
         scrollDetailView.delegate = self
         setUpDetailView()
         setUpViewBorder()

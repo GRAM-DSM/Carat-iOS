@@ -17,9 +17,19 @@ class MainHomeViewController: UITableViewController {
     private let httpClient = HTTPClient()
     let disposeBag = DisposeBag()
     
+    lazy var floatingButton: UIButton = {
+         let button = UIButton(frame: .zero)
+         button.translatesAutoresizingMaskIntoConstraints = false
+         button.backgroundColor = .systemPink
+         button.addTarget(self, action: #selector(fabTapped), for: .touchUpInside)
+         return button
+     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.barTintColor = .white
+
         Model.append(MainHomeModel(profileImage: nil, profileName: "뫙뫙", profileID: "#$@#ㅆ", mainText: "이야 오늘경기 정말", uploadImageView: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg"], post_time: "!3;532", recaringSum: 123, likeSum: 345, recaring: false, carat: false))
         Model.append(MainHomeModel(profileImage: nil, profileName: "뫙", profileID: "@ㄹㅇㄴ라", mainText: "이야…. 오늘 경기 정말 실화냐? 처음에 축구였다가 농구로 바뀌고 갑자기 또 축구로 바뀌더니 비가와서 농구로 바뀌고, 그렇게 농구 확정이라고 했는데 비가 안와서 축구라니…. 정말 가슴이 웅장해진다….", uploadImageView: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg"], post_time: "234",recaringSum: 123, likeSum: 345, recaring: true, carat: false))
         Model.append(MainHomeModel(profileImage: nil, profileName: "뫙", profileID: "@ㄹㅇㄴ라", mainText: "이야…. 오늘 경기 정말 실화냐? 처음에 축구였다가 농구로 바뀌고 갑자기 또 축구로 바뀌더니 비가와서 농구로 바뀌고, 그렇게 농구 확정이라고 했는데 비가 안와서 축구라니…. 정말 가슴이 웅장해진다….", uploadImageView: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg"], post_time: "234", recaringSum: 234, likeSum: 44, recaring: false, carat: false))
@@ -36,6 +46,42 @@ class MainHomeViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(MainHomeViewController.refresh), for: .valueChanged)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let view = UIApplication.shared.windows.filter({$0.isKeyWindow}).first{
+            view.addSubview(floatingButton)
+            setUpButton()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let view = UIApplication.shared.windows.filter({$0.isKeyWindow}).first, floatingButton.isDescendant(of: view) {
+            floatingButton.removeFromSuperview()
+        }
+    }
+    
+    func setUpButton(){
+        NSLayoutConstraint.activate([
+            floatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            floatingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+            floatingButton.heightAnchor.constraint(equalToConstant: 80),
+            floatingButton.widthAnchor.constraint(equalToConstant: 80)
+        ])
+        floatingButton.layer.cornerRadius = 40
+        floatingButton.layer.masksToBounds = true
+        floatingButton.layer.borderColor = UIColor.systemPink.cgColor
+        floatingButton.layer.borderWidth = 4
+        
+    }
+    
+    @objc func fabTapped(){
+        let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "PostingViewController") as! PostingViewController
+        self.navigationController?.pushViewController(pushVC, animated: true)
+        
+        print("button tapped")
+    }
+    
     @objc func refresh(){
         print("refresh")
         self.viewModel.loadFreshCaring()
@@ -45,8 +91,6 @@ class MainHomeViewController: UITableViewController {
     @IBAction func moreCaringView(_ sender: UIButton){
         self.tableView.reloadData()
     }
-    
-    
     
     //MARK: UITableViewDelegate, UITableViewDataSource
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
