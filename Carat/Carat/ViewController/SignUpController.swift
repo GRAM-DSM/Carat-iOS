@@ -24,7 +24,7 @@ class SignUpController: UIViewController {
 
     super.viewDidLoad()
     
-    signUpButton.layer.borderColor = UIColor(hexString: "#E50B6A").cgColor
+    signUpButton.layer.borderColor = UIColor.systemPink.cgColor
     signUpButton.layer.borderWidth = 2
     
     signUpButton.layer.cornerRadius = 10

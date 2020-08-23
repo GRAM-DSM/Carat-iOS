@@ -8,44 +8,34 @@
 
 import UIKit
 
-class ProfileController: UIViewController, UIScrollViewDelegate {
+class ProfileController: UIViewController {
+    
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nameLable: UILabel!
+    @IBOutlet weak var idLable: UILabel!
+    @IBOutlet weak var statusMessageLable: UILabel!
+    @IBOutlet weak var modifyProfileButton: UIButton!
+    @IBOutlet weak var subscriptionDateLabel: UILabel!
+    @IBOutlet weak var followingLable: UILabel!
+    @IBOutlet weak var followerLabel: UILabel!
 
-  var scrollView: UIScrollView!
-  var imageView: UIImageView!
-  
-  override func viewDidLoad() {
-
-    super.viewDidLoad()
-
-    //create background Image
-    imageView = UIImageView(image: UIImage(named: "background"))
-    imageView.frame = CGRect(origin: imageView.frame.origin, size: CGSize(width: view.frame.width, height: imageView.frame.height))
-    imageView.contentMode = .center
-
-    //create scrollView
-    scrollView = UIScrollView(frame: view.bounds)
-    scrollView.delegate = self
-    scrollView.bounces = true
-    scrollView.contentSize = CGSize(width: view.bounds.width,
-                    height: view.bounds.height * 2)
-    view.addSubview(scrollView)
-  }
-
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
-    let positionY = scrollView.contentOffset.y
-
-    if positionY < 0 {
-      let scale = 1 + ((-positionY) * 2 / imageView.frame.height)
-      imageView.transform = CGAffineTransform.identity
-      imageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //프로필 수정 버튼 둥글게
+        modifyProfileButton.layer.borderColor = UIColor.black.cgColor
+        modifyProfileButton.layer.borderWidth = 1
+        modifyProfileButton.layer.cornerRadius = 15
+        
+        //프로필 사진 둥글게
+        profileImage.layer.borderWidth=1.0
+        profileImage.layer.masksToBounds = false
+        profileImage.layer.cornerRadius = profileImage.frame.size.height/2
+        profileImage.clipsToBounds = true
       
-      var imageViewFrame = imageView.frame
-      imageViewFrame.origin.y = positionY
-      imageView.frame = imageViewFrame
-
-      }
-
-  }
-
+    }
+    
 }
