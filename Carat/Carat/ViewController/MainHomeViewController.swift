@@ -29,6 +29,8 @@ class MainHomeViewController: UITableViewController {
         let nib = UINib(nibName: "MainHomeTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "mainHomeCell")
         
+        self.tabBarItem.image = UIImage(named: "home_empty.jpeg")
+        self.tabBarItem.selectedImage = UIImage(named: "home_fill.jpeg")
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: "당겨서 새로고침")
         refreshControl?.addTarget(self, action: #selector(MainHomeViewController.refresh), for: .valueChanged)

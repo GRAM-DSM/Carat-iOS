@@ -216,7 +216,7 @@
                                                 </constraints>
                                                 <attributedString key="attributedText">
                                                     <fragment>
-                                                        <mutableString key="content">adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Exlore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria ut aliquip ex e</mutableString>
+                                                        <string key="content">adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Exlore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria ut aliquip ex e</string>
                                                         <attributes>
                                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                             <font key="NSFont" size="18" name="116angmuburi"/>
@@ -311,11 +311,11 @@
             </objects>
             <point key="canvasLocation" x="-3310" y="297"/>
         </scene>
-        <!--홈-->
+        <!--Home-->
         <scene sceneID="bH0-4L-IFG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hMc-6F-Yst" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="홈" landscapeImage="home_empty" id="9es-gq-RGJ"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="icon_filled-2" selectedImage="icon_home-2" id="9es-gq-RGJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="r3q-Ni-Y7h">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -335,7 +335,8 @@
         <image name="Carat_Logo_Bar" width="2084" height="2084"/>
         <image name="caratLogo1" width="2084" height="2084"/>
         <image name="defaultProfile" width="1871" height="1871"/>
-        <image name="home_empty" width="2084" height="2084"/>
+        <image name="icon_filled-2" width="25" height="25"/>
+        <image name="icon_home-2" width="25" height="25"/>
         <image name="like" width="2084" height="2084"/>
         <image name="recaring" width="2084" height="2084"/>
         <image name="selectedLike" width="2084" height="2084"/>
