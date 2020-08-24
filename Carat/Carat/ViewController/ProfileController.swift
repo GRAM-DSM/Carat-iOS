@@ -10,8 +10,8 @@ import UIKit
 
 class ProfileController: UIViewController, UIScrollViewDelegate {
 
-  var scrollView: UIScrollView!
-  var imageView: UIImageView!
+  var scrollView : UIScrollView!
+  var imageView : UIImageView!
   
   override func viewDidLoad() {
 
