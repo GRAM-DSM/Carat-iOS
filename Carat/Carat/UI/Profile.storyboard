@@ -15,10 +15,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="PPk-Ng-ZHh">
-                                <rect key="frame" x="20" y="130" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZJ-xw-nBd">
                                 <rect key="frame" x="20" y="237" width="129" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -105,6 +101,14 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="5dY-32-ixm">
+                                <rect key="frame" x="0.0" y="41" width="414" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="AH2-s4-NMh">
+                                <rect key="frame" x="20" y="121" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="xdT-Ba-R8y"/>
@@ -115,7 +119,6 @@
                         <outlet property="idLable" destination="vcQ-f8-ikB" id="hzm-W2-oZP"/>
                         <outlet property="modifyProfileButton" destination="Dg7-IU-IBK" id="9ai-xw-Bfv"/>
                         <outlet property="nameLable" destination="QZJ-xw-nBd" id="xmM-DQ-fyp"/>
-                        <outlet property="profileImage" destination="PPk-Ng-ZHh" id="mA7-I9-tlF"/>
                         <outlet property="statusMessageLable" destination="mKU-JV-SsH" id="bla-wE-irv"/>
                         <outlet property="subscriptionDateLabel" destination="6Jc-Yt-tY9" id="sZe-g9-2i1"/>
                     </connections>
@@ -126,6 +129,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="background" width="3000" height="2002"/>
         <image name="profile" width="1871" height="1871"/>
     </resources>
 </document>
