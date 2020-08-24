@@ -41,7 +41,16 @@ import RxCocoa
 //    var loginUser: PublishSubject<User?> = PublishSubject<User?>()
 //    var loginButtonTouch: PublishRelay<Void> = PublishRelay<Void>()
 //    var emailValueChange: PublishRelay<String?> = PublishRelay<String?>()
+//    var passwordValueChange: PublishRelay<String?> = PublishRelay<String?>()
+//    let disposeBag = DisposeBag()
 //
+//    var loginInfo:Observable<LoginInfo> {
+//        return Observable.combineLatest(txtIdValueChanged, txtPwValueChanged) {
+//            id, pw in
 //
-//
+//            return LoginInfo.init(id: id, pw: pw)
+//        }
+//    }
 //}
+
+
