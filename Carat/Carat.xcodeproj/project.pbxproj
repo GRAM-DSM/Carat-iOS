@@ -36,6 +36,7 @@
 		EBC0EDCC24E2B16900FFFF3F /* MainHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC0EDCB24E2B16900FFFF3F /* MainHomeModel.swift */; };
 		EBC1EA1924EA651700D340E0 /* DetailCaringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC1EA1824EA651700D340E0 /* DetailCaringViewController.swift */; };
 		EBC1EA1B24ECADB700D340E0 /* PostCaringModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC1EA1A24ECADB700D340E0 /* PostCaringModel.swift */; };
+		EBE12EE024F375AF00871093 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE12EDF24F375AF00871093 /* PostViewModel.swift */; };
 		EBE5CB4324DEE7AE00C22BB0 /* 116angmuburi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBE5CB4224DEE7A700C22BB0 /* 116angmuburi.ttf */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		EBC0EDCB24E2B16900FFFF3F /* MainHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeModel.swift; sourceTree = "<group>"; };
 		EBC1EA1824EA651700D340E0 /* DetailCaringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailCaringViewController.swift; path = Carat/ViewController/DetailCaringViewController.swift; sourceTree = SOURCE_ROOT; };
 		EBC1EA1A24ECADB700D340E0 /* PostCaringModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCaringModel.swift; sourceTree = "<group>"; };
+		EBE12EDF24F375AF00871093 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		EBE5CB4224DEE7A700C22BB0 /* 116angmuburi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 116angmuburi.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				EBA5AC8024DD456100C8F343 /* TestViewModel.swift */,
+				EBE12EDF24F375AF00871093 /* PostViewModel.swift */,
 				EB0D3A5024E3821800B971EE /* MainHomeViewModel.swift */,
 				EB775A7C24E60BBA00102C04 /* ViewModelType.swift */,
 			);
@@ -347,6 +350,7 @@
 				EBA5AC8124DD456100C8F343 /* TestViewModel.swift in Sources */,
 				EBBDFDF424EE5B66003C75BF /* HTTPClient.swift in Sources */,
 				EBC0EDCC24E2B16900FFFF3F /* MainHomeModel.swift in Sources */,
+				EBE12EE024F375AF00871093 /* PostViewModel.swift in Sources */,
 				EB7DEE5524DD3D50009D0E67 /* ViewController.swift in Sources */,
 				9FC12E8724ED596500844CA0 /* LogInModel.swift in Sources */,
 				EB7DEE5124DD3D50009D0E67 /* AppDelegate.swift in Sources */,
