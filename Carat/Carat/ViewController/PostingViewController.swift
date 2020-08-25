@@ -14,15 +14,15 @@ class PostingViewController: UIViewController{
     @IBOutlet weak var currentProfileImage: UIImageView!
     @IBOutlet weak var caringOKButton: UIButton!
     @IBOutlet weak var caringCancleButton: UIBarButtonItem!
+    @IBOutlet weak var plusImageButton: UIButton!
     
-    @IBOutlet weak var caringStackView: UIStackView!
     @IBOutlet weak var caringImage1: UIImageView!
     @IBOutlet weak var caringImage2: UIImageView!
     @IBOutlet weak var caringImage3: UIImageView!
     @IBOutlet weak var caringImage4: UIImageView!
     
     private let imagePicker = UIImagePickerController()
-    private var imageArray: [UIImage?] = []
+    private var imageArray = [UIImage?](repeating: nil, count: 4)
     private var captureImage = UIImage()
     private var flagImageSave: Bool = false
 
@@ -57,6 +57,18 @@ class PostingViewController: UIViewController{
         
         alertController.addAction(albumAction)
         alertController.addAction(cancleAction)
+        
+        if caringImage4.image != nil {
+
+            let alertController = UIAlertController(title: "경고", message: "더 이상 사진을 불러올 수 없습니다", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
+            alertController.addAction(alertAction)
+            present(alertController, animated: true, completion: nil)
+            
+            self.plusImageButton?.isEnabled = false
+            
+        }
         
         present(alertController, animated: true, completion: nil)
     }
@@ -151,28 +163,40 @@ extension PostingViewController: UIImagePickerControllerDelegate, UINavigationCo
             //2. 들어간 이미지가 있으면 빠져나옴
             //3. 들어간 이미지가 없으면 거기에 이미지 넣기
             //4, switch-case문으로 집어넣기
+            print(imageArray)
             
-            for i in 0..<3 {
-                if imageArray[i] == nil {
+            for i in 0..<4 {
+                if imageArray[i] == nil{
+                    print("\(i)번째 이미지 넣으러감")
                     switch i {
                     case 0:
                         self.caringImage1.image = image
+                        dismiss(animated: true, completion: nil)
+                        imageArray[i] = image
+                        return
                     case 1:
                         self.caringImage2.image = image
+                        dismiss(animated: true, completion: nil)
+                        imageArray[i] = image
+                        return
+                        
                     case 2:
                         self.caringImage3.image = image
+                        dismiss(animated: true, completion: nil)
+                        imageArray[i] = image
+                        return
                     case 3:
                         self.caringImage4.image = image
+                        imageArray[i] = image
+                        dismiss(animated: true, completion: nil)
+                        return
                     default:
-                        print("\(i)번째 이미지 지나감")
+                        return
                     }
-                    imageArray.append(image)
                 }else {
-                    print("pass")
+                     print("pass")
                 }
             }
-            self.caringImage1.image = image
         }
-        dismiss(animated: true, completion: nil)
     }
 }
