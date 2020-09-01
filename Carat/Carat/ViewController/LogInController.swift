@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-
+import RxSwift
+import RxCocoa
 
 class LogInController: UIViewController {
 
@@ -20,12 +20,14 @@ class LogInController: UIViewController {
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var forgetPasswordLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
-
-      override func viewDidLoad() {
+    
+    let viewModel = LogInViewModel()
+    let disposeBag = DisposeBag()
+    
+    override func viewDidLoad() {
 
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         
         self.textfieldBorderlineStyle(emailTextfield)
         self.textfieldBorderlineStyle(passwordTextfield)
@@ -45,6 +47,35 @@ class LogInController: UIViewController {
        nameOfTextField.layer.masksToBounds = true
       }
     
-    
+//    func bindViewModel() {
+//       self.emailTextfield.rx.text.orEmpty
+//            .bind(to: viewModel.emailChanged)
+//            .disposed(by: disposeBag)
+//        
+//        self.passwordTextfield.rx.text.orEmpty
+//            .bind(to: viewModel.passwordChaged)
+//            .disposed(by: disposeBag)
+//        self.logInButton.rx.tap
+//            .bind(to: viewModel.buttonClick)
+//            .disposed(by: disposeBag)
+//        
+//        viewModel.result.emit(onNext: { (result) in
+//            switch result {
+//            case .success(let user):
+//                print(user)
+//                self.moveToMain()
+//            case .failure(let err):
+//                print(err)
+//               self.showError()
+//            }
+//            }).disposed(by: disposeBag)
+//    }
+//    
+//    func moveToMain() {
+//        print("MOVE")
+//    }
+//    func showError() {
+//        print("ERROR")
+//    }
 
-    }
+}
