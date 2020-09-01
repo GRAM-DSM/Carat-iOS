@@ -34,6 +34,7 @@ class ProfileController: UIViewController, UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
     let positionY = scrollView.contentOffset.y
+    
 
     if positionY < 0 {
       let scale = 1 + ((-positionY) * 2 / imageView.frame.height)
