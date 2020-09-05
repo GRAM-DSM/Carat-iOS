@@ -8,3 +8,7 @@
 
 import Foundation
 
+struct PostCaringModel: Codable {
+    var postingText: String = ""
+    var postImage: [String?] = []
+}

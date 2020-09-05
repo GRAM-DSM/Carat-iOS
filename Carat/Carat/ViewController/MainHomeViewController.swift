@@ -7,116 +7,261 @@
 //
 
 import UIKit
-import RxCocoa
-import RxSwift
 
 class MainHomeViewController: UITableViewController {
-    
-    private let viewModel = MainHomeViewModel()
-    public var Model = [MainHomeModel]()
+    private var resultModel: TimeLineResult = TimeLineResult()
+    private var model: [MainHomeModel] = [MainHomeModel]()
     private let httpClient = HTTPClient()
-    let disposeBag = DisposeBag()
+
+    lazy var floatingButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .systemPink
+        button.addTarget(nil, action: #selector(floatingBtn), for: .touchUpInside)
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Model.append(MainHomeModel(profileImage: nil, profileName: "뫙뫙", profileID: "#$@#ㅆ", mainText: "이야 오늘경기 정말", uploadImageView: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg"], post_time: "!3;532", recaringSum: 123, likeSum: 345, recaring: false, carat: false))
-        Model.append(MainHomeModel(profileImage: nil, profileName: "뫙", profileID: "@ㄹㅇㄴ라", mainText: "이야…. 오늘 경기 정말 실화냐? 처음에 축구였다가 농구로 바뀌고 갑자기 또 축구로 바뀌더니 비가와서 농구로 바뀌고, 그렇게 농구 확정이라고 했는데 비가 안와서 축구라니…. 정말 가슴이 웅장해진다….", uploadImageView: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg"], post_time: "234",recaringSum: 123, likeSum: 345, recaring: true, carat: false))
-        Model.append(MainHomeModel(profileImage: nil, profileName: "뫙", profileID: "@ㄹㅇㄴ라", mainText: "이야…. 오늘 경기 정말 실화냐? 처음에 축구였다가 농구로 바뀌고 갑자기 또 축구로 바뀌더니 비가와서 농구로 바뀌고, 그렇게 농구 확정이라고 했는데 비가 안와서 축구라니…. 정말 가슴이 웅장해진다….", uploadImageView: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg"], post_time: "234", recaringSum: 234, likeSum: 44, recaring: false, carat: false))
-        
-        self.viewModel.firstLoadCaring()
+        navigationController?.navigationBar.barTintColor = .white
         self.tableView.reloadData()
-        let nib = UINib(nibName: "MainHomeTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "mainHomeCell")
+        
+        model.append(MainHomeModel(recaring_name: "who", owner: Owner(id: "걸걸", email: "arjnav", profile_image: "postingIcon"), post_time: "23.432;32", body: "이야 오늘경기 정말", body_images: ["like.jpeg", "recaring.jpeg", "selectedLike.jpeg", nil], carat_count: 3, recaring_count: 4, me_recaring: false, me_carat: false))
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 160
+
+        self.firstLoadCaring()
+        
+        registerCell()
         
         self.tabBarItem.image = UIImage(named: "home_empty.jpeg")
         self.tabBarItem.selectedImage = UIImage(named: "home_fill.jpeg")
+        
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: "당겨서 새로고침")
         refreshControl?.addTarget(self, action: #selector(MainHomeViewController.refresh), for: .valueChanged)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let view = UIApplication.shared.windows.filter({$0.isKeyWindow}).first{
+            view.addSubview(floatingButton)
+            setUpButton()
+        }
+        tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let view = UIApplication.shared.windows.filter({$0.isKeyWindow}).first, floatingButton.isDescendant(of: view) {
+            floatingButton.removeFromSuperview()
+        }
+    }
+    
+    //MARK: private function
+    private func registerCell(){
+        let nib = UINib(nibName: "MainHomeTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "mainHomeCell")
+    }
+    
+    
+    // 호출 될 때마다 +1 되어서 마지막 호출을 구분하기 위한 전역 변수
+    var addDataCallCount: Int = 0
+    
+    private func addData() {
+        let count: Int = resultModel.result.count
+        self.getLoadFreshCaring()
+        addDataCallCount += 1
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func setUpButton(){
+        NSLayoutConstraint.activate([
+            floatingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            floatingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+            floatingButton.heightAnchor.constraint(equalToConstant: 80),
+            floatingButton.widthAnchor.constraint(equalToConstant: 80)
+        ])
+        floatingButton.layer.cornerRadius = 40
+        floatingButton.layer.masksToBounds = true
+        floatingButton.layer.borderColor = UIColor.systemPink.cgColor
+        floatingButton.layer.borderWidth = 4
+    }
+    
+    @objc func floatingBtn(){
+        let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "PostingViewController") as! PostingViewController
+        self.navigationController?.pushViewController(pushVC, animated: true)
+    }
+    
     @objc func refresh(){
         print("refresh")
-        self.viewModel.loadFreshCaring()
         self.refreshControl?.endRefreshing()
     }
     
-    @IBAction func moreCaringView(_ sender: UIButton){
-        self.tableView.reloadData()
+    @objc func selectRecarings(sender: UIButton){
+        print(sender.tag)
+        if resultModel.result[sender.tag].me_recaring == true {
+            cancleRecaring(sender.tag)
+            sender.isSelected = false
+        }else{
+            createRecaring(sender.tag)
+            sender.isSelected = true
+        }
     }
     
-    
+    @objc func selectCarat(sender: UIButton){
+        print(sender.tag)
+        if resultModel.result[sender.tag].me_carat == true {
+            cancleCarat(sender.tag)
+            sender.isSelected = false
+        }else{
+            createCarat(sender.tag)
+            sender.isSelected = true
+        }
+    }
     
     //MARK: UITableViewDelegate, UITableViewDataSource
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mainHomeCell", for: indexPath) as! MainHomeTableViewCell
+
+        cell.profileNameLabel.text = resultModel.result[indexPath.row].owner.email
+        cell.profileImageLabel.image = UIImage(named: resultModel.result[indexPath.row].owner.profile_image)
+        cell.profileIDLabel.text = resultModel.result[indexPath.row].owner.id
+        cell.mainTextView.text = resultModel.result[indexPath.row].body
+        cell.currentNameLabel.text = resultModel.result[indexPath.row].recaring_name
         
-        if Model[indexPath.row].profileImage == nil{
-            Model[indexPath.row].profileImage = "defaultProfile.jpeg"
-        }
-        
-        cell.profileNameLabel.text = Model[indexPath.row].profileName
-        cell.profileImageLabel.image = UIImage(named: Model[indexPath.row].profileImage!)
-        cell.profileIDLabel.text = Model[indexPath.row].profileID
-        cell.mainTextView.text = Model[indexPath.row].mainText
-        
-        //imageview1, 2, 3, 4마다..
-        for i in 0..<3 {
-            if Model[indexPath.row].uploadImageView[i] == nil{
-                switch i {
-                case 1:
-                    cell.uploadImageView1.isHidden = true
-                case 2:
-                    cell.uploadImageView2.isHidden = true
-                case 3:
-                    cell.uploadImageView3.isHidden = true
-                case 4:
-                    cell.uploadImageView4.isHidden = true
-                default:
-                    print("셀 이미지")
-                }
+        for i in 0..<4 {
+            if model[indexPath.row].body_images[i] != nil{
+                let imageView = model[indexPath.row].body_images[i]
+                cell.uploadImageView[i].isHidden = false
+                cell.uploadImageView[i].image = UIImage(named: imageView!)
+            }else{
+                cell.uploadImageView[i].isHidden = true
             }
         }
         
-        cell.recaringButton.isSelected = Model[indexPath.row].recaring
-        cell.likeButton.isSelected = Model[indexPath.row].carat
-        cell.recaringSumLabel.text = String(Model[indexPath.row].recaringSum)
-        cell.likeSumLabel.text = String(Model[indexPath.row].likeSum)
-        cell.timeFromPostingLabel.text = Model[indexPath.row].post_time
+        cell.recaringButton.tag = indexPath.row
+        cell.recaringButton.addTarget(self, action: #selector(selectRecarings(sender:)), for: .touchUpInside)
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(selectCarat(sender:)), for: .touchUpInside)
+        cell.recaringSumLabel.text = String(resultModel.result[indexPath.row].recaring_count)
+        cell.likeSumLabel.text = String(resultModel.result[indexPath.row].carat_count)
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailCaringViewController") as! DetailCaringViewController
-        
-        pushVC.detailModel = Model[indexPath.row]
-        
+        pushVC.detailModel = resultModel.result[indexPath.row]
         self.navigationController?.pushViewController(pushVC, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.Model.count
+        return self.resultModel.result.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if Model[indexPath.row].uploadImageView.isEmpty {
-            return 200
-        } else {
-            return 372
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row > resultModel.result.count - 2{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                if tableView.visibleCells.contains(cell){
+                    self.addData()
+                }
+            }
         }
-        
+    }
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    //MARK: Service
+    func getLoadFreshCaring() {
+        httpClient.get(NetworkingAPI.timeLine(4, "어떻게 넣어줘야할까")).responseJSON(completionHandler: { [weak self] (response) in
+            guard let strongSelf = self else {return}
+            switch response.response?.statusCode{
+            case 200:
+                guard let value = response.data else {return}
+                guard let model = try? JSONDecoder().decode([MainHomeModel].self, from: value) else {return}
+                for i in 0...model.count - 1{
+                    if model[i].recaring_id != "" {
+                        strongSelf.resultModel.result.append(model[i])
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            default:
+                print("아직")
+            }
+        })
+    }
+    
+    func firstLoadCaring(){
+        httpClient.get(NetworkingAPI.timeLine(4, "")).responseJSON(completionHandler: { [weak self] (response) in
+            guard let strongSelf = self else {return}
+            switch response.response?.statusCode {
+            case 200:
+                print("loadCaring succesful")
+                guard let value = response.data else {return}
+                guard let model = try? JSONDecoder().decode([MainHomeModel].self, from: value) else { return }
+                //??
+                strongSelf.resultModel.result.append(contentsOf: model)
+            case 400:
+                print("bad request")
+            case 401:
+                print("your request has been forbidden")
+            default:
+                print("default")
+            }
+        })
+    }
+    
+    func createRecaring(_ indexPath: Int) {
+        httpClient.post(NetworkingAPI.createRecaring(resultModel.result[indexPath].caring_id)).responseJSON { (response) in
+            switch response.response?.statusCode {
+            case 200:
+                print("로직 생각 중")
+            default:
+                print("default")
+            }
+        }
+    }
+    
+    func cancleRecaring(_ indexPath: Int){
+        httpClient.delete(NetworkingAPI.cancleRecaring(resultModel.result[indexPath].caring_id)).responseJSON { (response) in
+            switch response.response?.statusCode{
+            case 200:
+                print("")
+            default:
+                print("알수없느오류")
+            }
+        }
+    }
+
+    func createCarat(_ indexPath: Int){
+        httpClient.post(NetworkingAPI.createLike(resultModel.result[indexPath].caring_id)).responseJSON { (response) in
+            switch response.response?.statusCode {
+            case 200:
+                //변경사항 resultModel에 담기
+                print("로직 생각 중")
+            default:
+                print("default")
+            }
+        }
+    }
+
+    func cancleCarat(_ indexPath: Int){
+        httpClient.delete(NetworkingAPI.cancleLike(resultModel.result[indexPath].caring_id)).responseJSON { (response) in
+            switch response.response?.statusCode{
+            case 200:
+                print("")
+            default:
+                print("알수없느오류")
+            }
+        }
+    }
 }

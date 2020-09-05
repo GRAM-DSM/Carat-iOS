@@ -14,10 +14,10 @@ enum NetworkingAPI {
     case renewalToken
     case signIn(_ name: String, _ email: String, _ pw: String)
     case deleteUser
-    case timeLine(_ size: Int, _ last_tweet_id: Int)
-    case timeLineOfProfile(_ email: String, _ size: Int, _ last_tweet_id: Int) // ?
+    case timeLine(_ size: Int, _ base_time: String)
+    case timeLineOfProfile(_ email: String, _ size: Int, _ base_time: String) // ?
     
-    case createCaring(_ tweet: String)
+    case createCaring(_ tweet: String, image: String?)
     case detailCaring(_ id: String)
     case deleteCaring(_ id: String)
     case reviseCaring(_ id: String)
@@ -70,7 +70,7 @@ enum NetworkingAPI {
     //MARK: headers
     var headers: [String: String]? {
         switch self {
-        case .Login:
+        case .signIn:
             return nil
             
         case .renewalToken:
@@ -97,13 +97,13 @@ enum NetworkingAPI {
         case .signIn(let name, let email, let pw):
             return ["name": name, "email": email, "password": pw]
         case .Login(let pw, let email):
-            return ["email": email, "password": pw]
-        case .timeLine(let size, let last_caring_id):
-            return ["size": size, "last_caring_id": last_caring_id]
-        case .timeLineOfProfile(let email, let size, let last_caring_id):
-            return ["email": email, "size": size, "last_caring_id": last_caring_id]
-        case .createCaring(let caring):
-            return ["caring": caring]
+            return ["email": email, "pw": pw]
+        case .timeLine(let size, let base_time):
+            return ["size": size, "base_time": base_time]
+        case .timeLineOfProfile(let email, let size, let base_time):
+            return ["email": email, "size": size, "base_time": base_time]
+        case .createCaring(let caring, let image):
+            return ["caring": caring, "image": image!]
         case .createRecaring(let id), .cancleRecaring(let id):
             return ["id": id]
         default:
@@ -112,6 +112,7 @@ enum NetworkingAPI {
     }
 }
 
+//토큰은 잘모르겠다 지수가 공부해줘서 나한테 알려줘~
 struct Token {
     static var token: String?{
         get{
