@@ -8,45 +8,47 @@
 
 import UIKit
 
-class ProfileController: UIViewController, UIScrollViewDelegate {
-
-  var scrollView : UIScrollView!
-  var imageView : UIImageView!
-  
-  override func viewDidLoad() {
-
-    super.viewDidLoad()
-
-    //create background Image
-    imageView = UIImageView(image: UIImage(named: "background"))
-    imageView.frame = CGRect(origin: imageView.frame.origin, size: CGSize(width: view.frame.width, height: imageView.frame.height))
-    imageView.contentMode = .center
-
-    //create scrollView
-    scrollView = UIScrollView(frame: view.bounds)
-    scrollView.delegate = self
-    scrollView.bounces = true
-    scrollView.contentSize = CGSize(width: view.bounds.width,
-                    height: view.bounds.height * 2)
-    view.addSubview(scrollView)
-  }
-
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
-    let positionY = scrollView.contentOffset.y
+class ProfileController: UIViewController/*, UIScrollViewDelegate*/{
+    var scrollView: UIScrollView!
+    var imageView: UIImageView!
     
-
-    if positionY < 0 {
-      let scale = 1 + ((-positionY) * 2 / imageView.frame.height)
-      imageView.transform = CGAffineTransform.identity
-      imageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var introductionLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var followingLable: UILabel!
+    @IBOutlet weak var followerLable: UILabel!
+    @IBOutlet weak var followernum: UILabel!
+    @IBOutlet weak var followingnum: UILabel!
+    @IBOutlet weak var modifyButton: UIButton!
+   // @IBOutlet weak var customTapbar: UIView!
+    @IBOutlet weak var scrollViewContainerViewWidth: NSLayoutConstraint!
       
-      var imageViewFrame = imageView.frame
-      imageViewFrame.origin.y = positionY
-      imageView.frame = imageViewFrame
 
-      }
-
-  }
-
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        scrollViewContainerViewWidth.constant = UIScreen.main.bounds.size.width * 2
+    }
+    
+    @IBAction func onAddChildController(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "Other", bundle: nil)
+        let addViewController = storyboard?.instantiateViewController(withIdentifier: "AddViewController")
+        
+       // self.addChild(addViewController)
+       // self.view.addSubview(addViewController.view)
+        
+        addViewController?.didMove(toParent: self)
+        
+        
+    }
+  
+}
+extension ViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("Current X,Y are X:\(scrollView.contentOffset.x), Y: \(scrollView.contentOffset.y)")
+        let currentPage = Int(round(scrollView.contentOffset.x / scrollView.frame.size.width))
+        print("current page : \(currentPage)")
+    }
 }

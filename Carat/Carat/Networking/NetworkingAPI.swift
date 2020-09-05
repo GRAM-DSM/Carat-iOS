@@ -37,6 +37,7 @@ enum NetworkingAPI {
     case createFolowing(_ email: String)
     case cancleFollowing(_ email: String)
     
+    //MARK: path
     var path: String {
         switch self {
         case .Login, .renewalToken:
@@ -67,7 +68,6 @@ enum NetworkingAPI {
     }
     
     //MARK: headers
-    //아직 미완
     var headers: [String: String]? {
         switch self {
         case .Login:
@@ -91,12 +91,13 @@ enum NetworkingAPI {
         }
     }
     
+    //MARK: parameters
     var parameters: [String: Any]{
         switch self {
         case .signIn(let name, let email, let pw):
-            return ["name": name, "email": email, "pw": pw]
+            return ["name": name, "email": email, "password": pw]
         case .Login(let pw, let email):
-            return ["email": email, "pw": pw]
+            return ["email": email, "password": pw]
         case .timeLine(let size, let last_caring_id):
             return ["size": size, "last_caring_id": last_caring_id]
         case .timeLineOfProfile(let email, let size, let last_caring_id):
@@ -109,8 +110,16 @@ enum NetworkingAPI {
             return [:]
         }
     }
+}
 
-    
-    
+struct Token {
+    static var token: String?{
+        get{
+            return UserDefaults.standard.string(forKey: "Token")
+        }
+        set{
+            UserDefaults.standard.set(newValue, forKey: "Token")
+        }
+    }
 }
 

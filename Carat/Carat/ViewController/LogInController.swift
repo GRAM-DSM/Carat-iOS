@@ -26,6 +26,7 @@ class LogInController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        
         self.textfieldBorderlineStyle(emailTextfield)
         self.textfieldBorderlineStyle(passwordTextfield)
 
@@ -43,5 +44,7 @@ class LogInController: UIViewController {
        nameOfTextField.layer.addSublayer(border)
        nameOfTextField.layer.masksToBounds = true
       }
+    
+    
 
     }
