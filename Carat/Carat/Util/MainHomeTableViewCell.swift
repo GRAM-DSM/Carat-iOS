@@ -11,59 +11,24 @@ import RxCocoa
 import RxSwift
 
 class MainHomeTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var knowHowRecaringStackView: UIStackView!
+    @IBOutlet weak var currentNameLabel: UILabel!
     @IBOutlet weak var profileImageLabel: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var profileIDLabel: UILabel!
     @IBOutlet weak var timeFromPostingLabel: UILabel!
     @IBOutlet weak var mainTextView: UITextView!
-    
-    @IBOutlet weak var uploadImageView1: UIImageView!
-    @IBOutlet weak var uploadImageView2: UIImageView!
-    @IBOutlet weak var uploadImageView3: UIImageView!
-    @IBOutlet weak var uploadImageView4: UIImageView!
-
+    @IBOutlet var uploadImageView: [UIImageView]!
     @IBOutlet weak var recaringButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var recaringSumLabel: UILabel!
     @IBOutlet weak var likeSumLabel: UILabel!
-    
-    var mainHomeCellModel: MainHomeModel!
-    
-    private var favorited: Bool = false
-    private var recaring: Bool = false
-    private var recaringSum: Int = 0
-    private var likeSum: Int = 0
-    
-    private let viewModel = MainHomeViewModel()
-    private let disposebag = DisposeBag()
-    
-    @IBAction func favoriteCarat(_ sendder: UIButton){
-        if !favorited {
-            favorited = true
-            likeButton.isSelected = favorited
-            recaringSum += 1
-        }else{
-            favorited = false
-            likeButton.isSelected = false
-            likeSum -= 1
-        }
-    }
-    
-    @IBAction func reCaring(_ sender: UIButton){
-        if !recaring {
-            recaring = true
-            recaringButton.isSelected = true
-            recaringSum += 1
-        }else{
-            recaring = false
-            recaringButton.isSelected = false
-            recaringSum -= 1
-        }
-    }
-    
+    @IBOutlet weak var allStackView: UIStackView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        mainTextView.sizeToFit()
         circleOfImage(profileImageLabel)
         // Initialization code
     }
