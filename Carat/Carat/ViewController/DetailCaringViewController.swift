@@ -14,12 +14,9 @@ class DetailCaringViewController: UIViewController {
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var profileIDLabel: UILabel!
     @IBOutlet weak var mainTextView: UITextView!
+    @IBOutlet var uploadImageView: [UIImageView]!
     
-    @IBOutlet weak var uploadImageView1: UIImageView!
-    @IBOutlet weak var uploadImageView2: UIImageView!
-    @IBOutlet weak var uploadImageView3: UIImageView!
-    @IBOutlet weak var uploadImageView4: UIImageView!
-    
+    @IBOutlet weak var currentNameLabel :UILabel!
     @IBOutlet weak var viewOfBottom: UIView!
     @IBOutlet weak var dateFormatterLabel: UILabel!
     @IBOutlet weak var timeFormatterLabel: UILabel!
@@ -29,12 +26,12 @@ class DetailCaringViewController: UIViewController {
     @IBOutlet weak var likeSumButton: UILabel!
     @IBOutlet weak var scrollDetailView: UIScrollView!
     @IBOutlet weak var detailStackView: UIStackView!
-
+    
     var detailModel: MainHomeModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+
         navigationController?.navigationBar.barTintColor = .white
 
         scrollDetailView.delegate = self
@@ -45,41 +42,32 @@ class DetailCaringViewController: UIViewController {
     }
     
     private func setUpDetailView(){
-        profileImageView.image = UIImage(named: (detailModel.profileImage)!)
-        profileNameLabel?.text = detailModel?.profileName
-        profileIDLabel?.text = detailModel?.profileID
+        profileImageView?.image = UIImage(named: detailModel.owner.profile_image)
+        profileNameLabel?.text = detailModel.owner.email
+        profileIDLabel?.text = detailModel.owner.id
         
-        for i in 0..<3 {
-            if detailModel.uploadImageView[i] == nil{
-                switch i {
-                case 1:
-                    self.uploadImageView1.isHidden = true
-                case 2:
-                    self.uploadImageView2.isHidden = true
-                case 3:
-                    self.uploadImageView3.isHidden = true
-                case 4:
-                    self.uploadImageView4.isHidden = true
-                default:
-                    print("셀 이미지")
-                }
+        for i in 0..<4 {
+            if detailModel.body_images[i] == nil{
+                uploadImageView[i].isHidden = true
             }
         }
         
-        mainTextView?.text = detailModel?.mainText
-        timeFormatterLabel?.text = detailModel?.post_time
+        currentNameLabel.text = detailModel.recaring_name
+        mainTextView?.text = detailModel.body
+        timeFormatterLabel?.text = detailModel.post_time
         
-        recaringButton.isSelected = detailModel.recaring
-        likeButton.isSelected = detailModel.carat
+        recaringButton.isSelected = detailModel.me_recaring
+        likeButton.isSelected = detailModel.me_carat
         
-        recaringSumButton.text = String(detailModel.recaringSum)
-        likeSumButton.text = String(detailModel.likeSum)
+        recaringSumButton.text = String(detailModel.recaring_count)
+        likeSumButton.text = String(detailModel.carat_count)
     }
 
-    private func setUpViewBorder(){
-        viewOfBottom.layer.borderWidth = 1
+    func setUpViewBorder(){
+        viewOfBottom.layer.borderWidth = 0.5
+        viewOfBottom.layer.borderColor = UIColor.gray.cgColor
     }
-    
+
     /*
     // MARK: - Navigation
 
@@ -99,6 +87,6 @@ public func circleOfImage(_ imageView: UIImageView) -> Void {
 
 extension DetailCaringViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("스크롤 중")
+        print("스크롤 중입니다")
     }
 }

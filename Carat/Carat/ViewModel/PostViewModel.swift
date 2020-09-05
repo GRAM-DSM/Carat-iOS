@@ -8,11 +8,24 @@
 
 import Foundation
 
-class PostViewModel: ViewModelType {
+class PostViewMode {
+    struct Input {
+        var test: String
+    }
     
-    private let httpClient = HTTPClient()
+    struct Output {
+        var test: String
+    }
     
-    func postCaring(){
+    let model: PostCaringModel = PostCaringModel()
+    private let postImage: String = ""
+    
+    func postCaring(_ arrayImage: [String?], _ body: String){
+        for _ in arrayImage{
+            print(arrayImage)
+        }
+        
+//        httpClient.post(NetworkingAPI.createCaring(postString, image: ))
     }
     
 }

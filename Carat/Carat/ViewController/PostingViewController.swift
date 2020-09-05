@@ -9,26 +9,53 @@
 import UIKit
 
 class PostingViewController: UIViewController{
-
+    
     @IBOutlet weak var postMainTextView: UITextView!
     @IBOutlet weak var currentProfileImage: UIImageView!
     @IBOutlet weak var caringOKButton: UIButton!
     @IBOutlet weak var caringCancleButton: UIBarButtonItem!
     @IBOutlet weak var plusImageButton: UIButton!
+    @IBOutlet var caringImage: [UIImageView]!
     
-    @IBOutlet weak var caringImage1: UIImageView!
-    @IBOutlet weak var caringImage2: UIImageView!
-    @IBOutlet weak var caringImage3: UIImageView!
-    @IBOutlet weak var caringImage4: UIImageView!
-    
+    private var httpClient = HTTPClient()
+    private var Model = PostCaringModel()
     private let imagePicker = UIImagePickerController()
     private var imageArray = [UIImage?](repeating: nil, count: 4)
     private var captureImage = UIImage()
     private var flagImageSave: Bool = false
-
+    private var confirmImage: Bool = true
+    
+    @IBAction func selectPlusImage(_ sender: UIButton){
+        let alertController = UIAlertController(title: "이미지 불러오기", message: nil, preferredStyle: .actionSheet)
+        let albumAction = UIAlertAction(title: "앨범에서 가져오기", style: .default) { (action) in
+            self.openLibrary()
+        }
+        let cancleAction = UIAlertAction(title: "취소", style: .cancel)
+        alertController.addAction(albumAction)
+        alertController.addAction(cancleAction)
+        
+        if !self.confirmImage {
+            let alertController = UIAlertController(title: "경고", message: "더 이상 사진을 불러올 수 없습니다", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
+            alertController.addAction(alertAction)
+            self.present(alertController, animated: true, completion: nil)
+            
+            self.plusImageButton?.isEnabled = false
+        }
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func selectOKButton(_ sender: UIButton){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func selectCancleButton(_ sender: UIButton){
+        self.navigationController?.popViewController(animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationController?.navigationBar.barTintColor = .white
         caringOKButton.tintColor = .gray
         
@@ -40,48 +67,7 @@ class PostingViewController: UIViewController{
         
         circleOfImage(currentProfileImage)
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        print("viewdidAppear")
-//        self.caringImageCollectionView.reloadData()
-//    }
-    
-    @IBAction func caringPlusImage(_ sender: UIButton){
-        
-        let alertController = UIAlertController(title: "이미지 불러오기", message: nil, preferredStyle: .actionSheet)
-        let albumAction = UIAlertAction(title: "앨범에서 가져오기", style: .default) { (action) in
-            self.openLibrary()
-        }
-        
-        let cancleAction = UIAlertAction(title: "취소", style: .cancel)
-        
-        alertController.addAction(albumAction)
-        alertController.addAction(cancleAction)
-        
-        if caringImage4.image != nil {
 
-            let alertController = UIAlertController(title: "경고", message: "더 이상 사진을 불러올 수 없습니다", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-            
-            alertController.addAction(alertAction)
-            present(alertController, animated: true, completion: nil)
-            
-            self.plusImageButton?.isEnabled = false
-            
-        }
-        
-        present(alertController, animated: true, completion: nil)
-    }
-    
-    @IBAction func caringOKButton(_ sender: UIButton){
-        //데이터 전달 + post
-        navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func caringCancleButton(_ sender: UIBarButtonItem){
-        navigationController?.popViewController(animated: true)
-    }
-    
     func openLibrary(){
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
@@ -98,26 +84,22 @@ class PostingViewController: UIViewController{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.postMainTextView.resignFirstResponder()
     }
-
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    //MARK: Service
+//
+//    func createCaring(){
+//        for image in imageArray {
+//            Model.postImage = image
+//        }
+//        httpClient.post(NetworkingAPI.createCaring(Model.postingText, image: )))
+//    }
+    
 }
 
 extension PostingViewController: UITextViewDelegate{
-    
-    //높이 동적으로..
     func textViewDidChange(_ textView: UITextView) {
         caringOKButton.tintColor = .systemPink
-
+        
         let size = CGSize(width: 320, height: 180)
         let estimatedSize = textView.sizeThatFits(size)
         textView.constraints.forEach { (constraint) in
@@ -158,43 +140,37 @@ extension PostingViewController: UITextViewDelegate{
 extension PostingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image: UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-            
-            //1. 이미 들어간 이미지가 있는지 찾는다
-            //2. 들어간 이미지가 있으면 빠져나옴
-            //3. 들어간 이미지가 없으면 거기에 이미지 넣기
-            //4, switch-case문으로 집어넣기
-            print(imageArray)
-            
+
             for i in 0..<4 {
                 if imageArray[i] == nil{
                     print("\(i)번째 이미지 넣으러감")
                     switch i {
                     case 0:
-                        self.caringImage1.image = image
+                        self.caringImage[i].image = image
                         dismiss(animated: true, completion: nil)
                         imageArray[i] = image
                         return
                     case 1:
-                        self.caringImage2.image = image
+                        self.caringImage[i].image = image
                         dismiss(animated: true, completion: nil)
                         imageArray[i] = image
                         return
-                        
                     case 2:
-                        self.caringImage3.image = image
+                        self.caringImage[i].image = image
                         dismiss(animated: true, completion: nil)
                         imageArray[i] = image
                         return
                     case 3:
-                        self.caringImage4.image = image
+                        self.caringImage[i].image = image
                         imageArray[i] = image
                         dismiss(animated: true, completion: nil)
+                        self.confirmImage = true
                         return
                     default:
                         return
                     }
                 }else {
-                     print("pass")
+                    print("pass")
                 }
             }
         }
