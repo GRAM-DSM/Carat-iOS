@@ -95,7 +95,7 @@ enum NetworkingAPI {
     var parameters: [String: Any]{
         switch self {
         case .signIn(let name, let email, let pw):
-            return ["name": name, "email": email, "pw": pw]
+            return ["name": name, "email": email, "password": pw]
         case .Login(let pw, let email):
             return ["email": email, "pw": pw]
         case .timeLine(let size, let base_time):

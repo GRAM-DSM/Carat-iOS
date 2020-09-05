@@ -265,6 +265,7 @@
                         <viewLayoutGuide key="safeArea" id="5BB-AZ-BVt"/>
                     </view>
                     <navigationItem key="navigationItem" id="cE1-Ja-VES">
+                        <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" title="로그인" id="ZL0-Ls-dgC">
                             <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
@@ -442,5 +443,3 @@
         <image name="caratLogo2" width="2084" height="2084"/>
     </resources>
 </document>
-
-
