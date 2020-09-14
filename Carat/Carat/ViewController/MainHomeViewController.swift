@@ -135,10 +135,16 @@ class MainHomeViewController: UITableViewController {
         cell.currentNameLabel.text = resultModel.result[indexPath.row].recaring_name
         
         for i in 0..<4 {
-            if model[indexPath.row].body_images[i] != nil{
-                let imageView = model[indexPath.row].body_images[i]
-                cell.uploadImageView[i].isHidden = false
-                cell.uploadImageView[i].image = UIImage(named: imageView!)
+            if resultModel.result[indexPath.row].body_images[i] != nil{
+                let imageURL = resultModel.result[indexPath.row].body_images[i]
+                let url: URL! = URL(string: imageURL!)
+                let imageData = try! Data(contentsOf: url)
+                let imageView = UIImage(data: imageData)
+                
+                DispatchQueue.main.async(execute: {
+                    NSLog("비동기 방식으로 실행되는 부분입니다")
+                    cell.uploadImageView[i].image = imageView
+                })
             }else{
                 cell.uploadImageView[i].isHidden = true
             }
@@ -156,8 +162,9 @@ class MainHomeViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailCaringViewController") as! DetailCaringViewController
-        pushVC.detailModel = resultModel.result[indexPath.row]
+        pushVC.caringId = resultModel.result[indexPath.row].caring_id
         self.navigationController?.pushViewController(pushVC, animated: true)
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -179,7 +186,7 @@ class MainHomeViewController: UITableViewController {
     
     //MARK: Service
     func getLoadFreshCaring() {
-        httpClient.get(NetworkingAPI.timeLine(4, "어떻게 넣어줘야할까")).responseJSON(completionHandler: { [weak self] (response) in
+        httpClient.get(NetworkingAPI.timeLine(4, resultModel.result.last?.post_time ?? "")).responseJSON(completionHandler: { [weak self] (response) in
             guard let strongSelf = self else {return}
             switch response.response?.statusCode{
             case 200:
@@ -190,7 +197,6 @@ class MainHomeViewController: UITableViewController {
                         strongSelf.resultModel.result.append(model[i])
                     }
                 }
-                
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
@@ -201,7 +207,7 @@ class MainHomeViewController: UITableViewController {
     }
     
     func firstLoadCaring(){
-        httpClient.get(NetworkingAPI.timeLine(4, "")).responseJSON(completionHandler: { [weak self] (response) in
+        httpClient.get(NetworkingAPI.timeLine(4,"")).responseJSON(completionHandler: { [weak self] (response) in
             guard let strongSelf = self else {return}
             switch response.response?.statusCode {
             case 200:
@@ -223,10 +229,16 @@ class MainHomeViewController: UITableViewController {
     func createRecaring(_ indexPath: Int) {
         httpClient.post(NetworkingAPI.createRecaring(resultModel.result[indexPath].caring_id)).responseJSON { (response) in
             switch response.response?.statusCode {
-            case 200:
-                print("로직 생각 중")
+            case 201:
+                print("No content")
+            case 400:
+                print("a bad Request")
+            case 401:
+                 print("your request has been forbidden")
+            case 404:
+                 print("Tweets to read do not exist")
             default:
-                print("default")
+                print("i don't know")
             }
         }
     }
@@ -234,8 +246,14 @@ class MainHomeViewController: UITableViewController {
     func cancleRecaring(_ indexPath: Int){
         httpClient.delete(NetworkingAPI.cancleRecaring(resultModel.result[indexPath].caring_id)).responseJSON { (response) in
             switch response.response?.statusCode{
-            case 200:
-                print("")
+            case 204:
+                print("No content")
+            case 400:
+                print("a bad Request")
+            case 401:
+                 print("your request has been forbidden")
+            case 404:
+                 print("Tweets to read do not exist")
             default:
                 print("알수없느오류")
             }
@@ -246,8 +264,11 @@ class MainHomeViewController: UITableViewController {
         httpClient.post(NetworkingAPI.createLike(resultModel.result[indexPath].caring_id)).responseJSON { (response) in
             switch response.response?.statusCode {
             case 200:
-                //변경사항 resultModel에 담기
                 print("로직 생각 중")
+            case 403:
+                print("your request has been forbidden")
+            case 404:
+                print("tweets to add carat do not exist")
             default:
                 print("default")
             }
@@ -259,6 +280,10 @@ class MainHomeViewController: UITableViewController {
             switch response.response?.statusCode{
             case 200:
                 print("")
+            case 403:
+                print("your request has been forbidden")
+            case 404:
+                print("tweets to add carat do not exist")
             default:
                 print("알수없느오류")
             }

@@ -15,7 +15,7 @@
 		9F7B1D6324EF569000B3E12F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F7B1D6224EF569000B3E12F /* Profile.storyboard */; };
 		9FC12E8724ED596500844CA0 /* LogInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC12E8624ED596500844CA0 /* LogInModel.swift */; };
 		A877F05EBBE1E0351FB5A4F4 /* Pods_Carat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFF929BE85CBFE253462359 /* Pods_Carat.framework */; };
-		EB07C65E2502C23C004F2D95 /* Follow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB07C65D2502C23C004F2D95 /* Follow.storyboard */; };
+		EB07C65E2502C23C004F2D95 /* x.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB07C65D2502C23C004F2D95 /* x.storyboard */; };
 		EB07C6602502C29D004F2D95 /* FollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB07C65F2502C29D004F2D95 /* FollowViewController.swift */; };
 		EB07C6632502C34C004F2D95 /* FollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB07C6612502C34C004F2D95 /* FollowTableViewCell.swift */; };
 		EB07C6642502C34C004F2D95 /* FollowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB07C6622502C34C004F2D95 /* FollowTableViewCell.xib */; };
@@ -57,7 +57,7 @@
 		9F7B1D6224EF569000B3E12F /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		9FC12E8624ED596500844CA0 /* LogInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModel.swift; sourceTree = "<group>"; };
 		CA16BEA7F2C6B4C66E3B4E00 /* Pods-Carat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carat.release.xcconfig"; path = "Target Support Files/Pods-Carat/Pods-Carat.release.xcconfig"; sourceTree = "<group>"; };
-		EB07C65D2502C23C004F2D95 /* Follow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Follow.storyboard; sourceTree = "<group>"; };
+		EB07C65D2502C23C004F2D95 /* x.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = x.storyboard; sourceTree = "<group>"; };
 		EB07C65F2502C29D004F2D95 /* FollowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewController.swift; sourceTree = "<group>"; };
 		EB07C6612502C34C004F2D95 /* FollowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowTableViewCell.swift; sourceTree = "<group>"; };
 		EB07C6622502C34C004F2D95 /* FollowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowTableViewCell.xib; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 				EB41BA9F24EF5478009964CA /* MainHome.storyboard */,
 				9F7B1D6024EF55BA00B3E12F /* Auth.storyboard */,
 				9F7B1D6224EF569000B3E12F /* Profile.storyboard */,
-				EB07C65D2502C23C004F2D95 /* Follow.storyboard */,
+				EB07C65D2502C23C004F2D95 /* x.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -295,7 +295,7 @@
 				EBA5AC7524DD3EA100C8F343 /* .swiftlint.yml in Resources */,
 				EBE5CB4324DEE7AE00C22BB0 /* 116angmuburi.ttf in Resources */,
 				EB41BAA024EF5479009964CA /* MainHome.storyboard in Resources */,
-				EB07C65E2502C23C004F2D95 /* Follow.storyboard in Resources */,
+				EB07C65E2502C23C004F2D95 /* x.storyboard in Resources */,
 				EB7DEE5D24DD3D55009D0E67 /* LaunchScreen.storyboard in Resources */,
 				9F7B1D6324EF569000B3E12F /* Profile.storyboard in Resources */,
 				EB7DEE5A24DD3D55009D0E67 /* Assets.xcassets in Resources */,

@@ -28,17 +28,19 @@ class DetailCaringViewController: UIViewController {
     @IBOutlet weak var detailStackView: UIStackView!
     
     var detailModel: MainHomeModel!
-    
+    var caringId = String()
+    var httpClient: HTTPClient = HTTPClient()
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.currentNameLabel.text = caringId
         navigationController?.navigationBar.barTintColor = .white
 
         scrollDetailView.delegate = self
         setUpDetailView()
         setUpViewBorder()
-        
         circleOfImage(profileImageView!)
+        detailViewCaring()
     }
     
     private func setUpDetailView(){
@@ -47,7 +49,9 @@ class DetailCaringViewController: UIViewController {
         profileIDLabel?.text = detailModel.owner.id
         
         for i in 0..<4 {
-            if detailModel.body_images[i] == nil{
+            if let model = detailModel.body_images[i] {
+                uploadImageView[i].image = UIImage(named: model)
+            }else{
                 uploadImageView[i].isHidden = true
             }
         }
@@ -68,6 +72,26 @@ class DetailCaringViewController: UIViewController {
         viewOfBottom.layer.borderColor = UIColor.gray.cgColor
     }
 
+    
+    func detailViewCaring(){
+        httpClient.get(NetworkingAPI.detailCaring(caringId)).responseJSON { (response) in
+            switch response.response?.statusCode{
+            case 200:
+                print("get detailCaring")
+                guard let value = response.data else {return}
+                guard let model = try? JSONDecoder().decode(MainHomeModel.self, from: value) else {return}
+                let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailCaringViewController") as! DetailCaringViewController
+                pushVC.detailModel = model
+                self.navigationController?.pushViewController(pushVC, animated: true)
+            case 400:
+                print("a bad Request")
+            case 404:
+                 print("Tweets to read do not exist")
+            default:
+                print("i don't know")
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -77,8 +101,6 @@ class DetailCaringViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    
 }
 
 public func circleOfImage(_ imageView: UIImageView) -> Void {

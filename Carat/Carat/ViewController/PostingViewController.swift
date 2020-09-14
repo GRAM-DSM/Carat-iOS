@@ -18,12 +18,12 @@ class PostingViewController: UIViewController{
     @IBOutlet var caringImage: [UIImageView]!
     
     private var httpClient = HTTPClient()
-    private var Model = PostCaringModel()
     private let imagePicker = UIImagePickerController()
     private var imageArray = [UIImage?](repeating: nil, count: 4)
     private var captureImage = UIImage()
     private var flagImageSave: Bool = false
     private var confirmImage: Bool = true
+    private var model: PostCaringModel = PostCaringModel()
     
     @IBAction func selectPlusImage(_ sender: UIButton){
         let alertController = UIAlertController(title: "이미지 불러오기", message: nil, preferredStyle: .actionSheet)
@@ -47,7 +47,7 @@ class PostingViewController: UIViewController{
     }
     
     @IBAction func selectOKButton(_ sender: UIButton){
-        self.navigationController?.popViewController(animated: true)
+        self.createCaring()
     }
     
     @IBAction func selectCancleButton(_ sender: UIButton){
@@ -86,13 +86,12 @@ class PostingViewController: UIViewController{
     }
     
     //MARK: Service
-//
-//    func createCaring(){
-//        for image in imageArray {
-//            Model.postImage = image
-//        }
-//        httpClient.post(NetworkingAPI.createCaring(Model.postingText, image: )))
-//    }
+
+    func createCaring(){
+        httpClient.post(NetworkingAPI.createCaring(model.postingText, image: model.postImage)).responseJSON { (response) in
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
     
 }
 
@@ -140,7 +139,9 @@ extension PostingViewController: UITextViewDelegate{
 extension PostingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image: UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-
+            guard let fileUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL else { return }
+            print(fileUrl.lastPathComponent)
+            
             for i in 0..<4 {
                 if imageArray[i] == nil{
                     print("\(i)번째 이미지 넣으러감")
@@ -149,22 +150,25 @@ extension PostingViewController: UIImagePickerControllerDelegate, UINavigationCo
                         self.caringImage[i].image = image
                         dismiss(animated: true, completion: nil)
                         imageArray[i] = image
+                        self.model.postImage[i] = fileUrl.lastPathComponent
                         return
                     case 1:
                         self.caringImage[i].image = image
                         dismiss(animated: true, completion: nil)
                         imageArray[i] = image
+                        self.model.postImage[i] = fileUrl.lastPathComponent
                         return
                     case 2:
                         self.caringImage[i].image = image
                         dismiss(animated: true, completion: nil)
                         imageArray[i] = image
+                        self.model.postImage[i] = fileUrl.lastPathComponent
                         return
                     case 3:
                         self.caringImage[i].image = image
                         imageArray[i] = image
                         dismiss(animated: true, completion: nil)
-                        self.confirmImage = true
+                        self.model.postImage[i] = fileUrl.lastPathComponent
                         return
                     default:
                         return

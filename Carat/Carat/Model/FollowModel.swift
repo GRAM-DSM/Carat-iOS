@@ -22,10 +22,10 @@ struct FollowModel: Codable {
     }
 }
 
-struct FollowerModel {
-    var follower: [FollowModel]
+struct FollowerModel: Codable {
+    var follower: [FollowModel] = []
 }
 
-struct FollowingModel{
-    var following: [FollowModel]
+struct FollowingModel: Codable {
+    var following: [FollowModel] = []
 }
