@@ -14,10 +14,10 @@ enum NetworkingAPI {
     case renewalToken
     case signUp(_ name: String, _ email: String, _ password: String)
     case deleteUser
-    case timeLine(_ size: Int, _ last_tweet_id: Int)
-    case timeLineOfProfile(_ email: String, _ size: Int, _ last_tweet_id: Int) // ?
+    case timeLine(_ size: Int, _ base_time: String)
+    case timeLineOfProfile(_ email: String, _ size: Int, _ base_time: String) // ?
     
-    case createCaring(_ tweet: String)
+    case createCaring(_ tweet: String, image: String?)
     case detailCaring(_ id: String)
     case deleteCaring(_ id: String)
     case reviseCaring(_ id: String)
@@ -70,7 +70,7 @@ enum NetworkingAPI {
     //MARK: headers
     var headers: [String: String]? {
         switch self {
-        case .Login:
+        case .signIn:
             return nil
             
         case .renewalToken:
@@ -112,6 +112,7 @@ enum NetworkingAPI {
     }
 }
 
+//토큰은 잘모르겠다 지수가 공부해줘서 나한테 알려줘~
 struct Token {
     static var token: String?{
         get{
