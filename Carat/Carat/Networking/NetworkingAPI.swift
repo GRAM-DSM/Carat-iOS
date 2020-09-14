@@ -10,9 +10,9 @@ import Foundation
 import Alamofire
 
 enum NetworkingAPI {
-    case Login(_ pw: String, _ email: String)
+    case Login(_ email: String, _ password: String)
     case renewalToken
-    case signIn(_ name: String, _ email: String, _ pw: String)
+    case signUp(_ name: String, _ email: String, _ password: String)
     case deleteUser
     case timeLine(_ size: Int, _ base_time: String)
     case timeLineOfProfile(_ email: String, _ size: Int, _ base_time: String) // ?
@@ -42,7 +42,7 @@ enum NetworkingAPI {
         switch self {
         case .Login, .renewalToken:
             return "/user/auth"
-        case .signIn, .deleteUser:
+        case .signUp, .deleteUser:
             return "/user"
         case .timeLine, .timeLineOfProfile:
             return "/timeline"
@@ -94,16 +94,16 @@ enum NetworkingAPI {
     //MARK: parameters
     var parameters: [String: Any]{
         switch self {
-        case .signIn(let name, let email, let pw):
-            return ["name": name, "email": email, "password": pw]
-        case .Login(let pw, let email):
-            return ["email": email, "pw": pw]
-        case .timeLine(let size, let base_time):
-            return ["size": size, "base_time": base_time]
-        case .timeLineOfProfile(let email, let size, let base_time):
-            return ["email": email, "size": size, "base_time": base_time]
-        case .createCaring(let caring, let image):
-            return ["caring": caring, "image": image]
+        case .signUp(let name, let email, let password):
+            return ["name": name, "email": email, "password": password]
+        case .Login(let email, let password):
+            return ["email": email, "password": password]
+        case .timeLine(let size, let last_caring_id):
+            return ["size": size, "last_caring_id": last_caring_id]
+        case .timeLineOfProfile(let email, let size, let last_caring_id):
+            return ["email": email, "size": size, "last_caring_id": last_caring_id]
+        case .createCaring(let caring):
+            return ["caring": caring]
         case .createRecaring(let id), .cancleRecaring(let id):
             return ["id": id]
         default:
