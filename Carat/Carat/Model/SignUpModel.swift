@@ -1,14 +1,13 @@
 //
-//  LogInModel.swift
+//  SignUpModel.swift
 //  Carat
 //
-//  Created by 문지수 on 2020/08/19.
+//  Created by 이가영 on 2020/09/14.
 //  Copyright © 2020 이가영. All rights reserved.
 //
 
 import Foundation
 
-struct LogInModel: Codable {
+struct SignUpModel: Codable {
     let token: String
 }
-
