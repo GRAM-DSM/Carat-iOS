@@ -17,7 +17,7 @@ enum NetworkingAPI {
     case timeLine(_ size: Int, _ base_time: String)
     case timeLineOfProfile(_ email: String, _ size: Int, _ base_time: String) // ?
     
-    case createCaring(_ tweet: String, image: String?)
+    case createCaring(_ tweet: String, image: [String?])
     case detailCaring(_ id: String)
     case deleteCaring(_ id: String)
     case reviseCaring(_ id: String)
@@ -112,7 +112,7 @@ enum NetworkingAPI {
     }
 }
 
-//토큰은 잘모르겠다 지수가 공부해줘서 나한테 알려줘~
+//토큰은 잘 모르겠다 지수가 공부해줘서 나한테 알려줘~
 struct Token {
     static var token: String?{
         get{

@@ -9,12 +9,12 @@
 import UIKit
 
 class TopTabBarCell: UICollectionViewCell{
+    
     @IBOutlet weak var titleLabel: UILabel!
 
     override var isHighlighted: Bool{
         didSet {
             titleLabel.textColor = isHighlighted ? UIColor.black : UIColor.gray
-
         }
     }
     
