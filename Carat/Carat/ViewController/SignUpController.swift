@@ -20,6 +20,9 @@ class SignUpController: UIViewController {
   @IBOutlet weak var signUpButton: UIButton!
   @IBOutlet weak var logInButton: UIButton!
 
+    
+    let httpClient = HTTPClient()
+    
   override func viewDidLoad() {
 
     super.viewDidLoad()
@@ -47,5 +50,21 @@ class SignUpController: UIViewController {
     nameOfTextField.layer.masksToBounds = true
 
   }
+    
+    func signUp(name: String, email: String, password: String) {
+        httpClient.post(NetworkingAPI.signUp(name, email, password)).responseJSON(completionHandler: { [weak self] (response) in
+            guard let strongSelf = self else { return }
+            switch response.response?.statusCode {
+            case 200:
+                guard let value = response.data else { return }
+                guard let model = try? JSONDecoder().decode(SignUpModel.self, from: value) else { return }
+                Token.token = model.token
+            case 400:
+                print("Bad Request")
+            case 409:
+                print("Conflict")
+            }
+        })
+    }
 }
 

@@ -21,8 +21,8 @@ class LogInController: UIViewController {
     @IBOutlet weak var forgetPasswordLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     
-    let viewModel = LogInViewModel()
-    let disposeBag = DisposeBag()
+    let httpclient = HTTPClient()
+    
     
     override func viewDidLoad() {
 
@@ -31,6 +31,7 @@ class LogInController: UIViewController {
         
         self.textfieldBorderlineStyle(emailTextfield)
         self.textfieldBorderlineStyle(passwordTextfield)
+        
 
       }
 
@@ -47,35 +48,34 @@ class LogInController: UIViewController {
        nameOfTextField.layer.masksToBounds = true
       }
     
-//    func bindViewModel() {
-//       self.emailTextfield.rx.text.orEmpty
-//            .bind(to: viewModel.emailChanged)
-//            .disposed(by: disposeBag)
-//        
-//        self.passwordTextfield.rx.text.orEmpty
-//            .bind(to: viewModel.passwordChaged)
-//            .disposed(by: disposeBag)
-//        self.logInButton.rx.tap
-//            .bind(to: viewModel.buttonClick)
-//            .disposed(by: disposeBag)
-//        
-//        viewModel.result.emit(onNext: { (result) in
-//            switch result {
-//            case .success(let user):
-//                print(user)
-//                self.moveToMain()
-//            case .failure(let err):
-//                print(err)
-//               self.showError()
-//            }
-//            }).disposed(by: disposeBag)
-//    }
-//    
-//    func moveToMain() {
-//        print("MOVE")
-//    }
-//    func showError() {
-//        print("ERROR")
-//    }
-
+    @IBAction func moveNext(_ sender: Any) {
+        guard  let move = self.storyboard?.instantiateViewController(withIdentifier: "MainHomeViewController") else { return }
+       
+    }
+    
+    func login(email : String, password: String) {
+        httpclient.post(NetworkingAPI.Login(email, password)).responseJSON(completionHandler: { [weak self] (response) in
+            guard let strongSelf = self else { return }
+            switch response.response?.statusCode {
+            case 200:
+                guard let value = response.data else { return }
+                guard let model = try? JSONDecoder().decode(LogInModel.self, from: value) else { return }
+                Token.token = model.token
+                DispatchQueue.main.async {
+                    
+                }
+            case 400:
+                print("Bad Request")
+            case 403:
+                print("Forbidden")
+            case 404:
+                print("Not Found")
+            }
+            
+        })
+        
+    }
 }
+    
+
+
