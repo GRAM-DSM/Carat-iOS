@@ -15,7 +15,6 @@
 		9F7B1D6324EF569000B3E12F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F7B1D6224EF569000B3E12F /* Profile.storyboard */; };
 		9FC12E8724ED596500844CA0 /* LogInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC12E8624ED596500844CA0 /* LogInModel.swift */; };
 		9FE44F3424F5594800F245FF /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE44F3324F5594800F245FF /* LogInViewModel.swift */; };
-		9FE54E3524F42102006471BF /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE54E3424F42102006471BF /* SignUpModel.swift */; };
 		A877F05EBBE1E0351FB5A4F4 /* Pods_Carat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFF929BE85CBFE253462359 /* Pods_Carat.framework */; };
 		EB07C65E2502C23C004F2D95 /* x.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB07C65D2502C23C004F2D95 /* x.storyboard */; };
 		EB07C6602502C29D004F2D95 /* FollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB07C65F2502C29D004F2D95 /* FollowViewController.swift */; };
@@ -60,7 +59,6 @@
 		9F7B1D6224EF569000B3E12F /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		9FC12E8624ED596500844CA0 /* LogInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModel.swift; sourceTree = "<group>"; };
 		9FE44F3324F5594800F245FF /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
-		9FE54E3424F42102006471BF /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		CA16BEA7F2C6B4C66E3B4E00 /* Pods-Carat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carat.release.xcconfig"; path = "Target Support Files/Pods-Carat/Pods-Carat.release.xcconfig"; sourceTree = "<group>"; };
 		EB07C65D2502C23C004F2D95 /* x.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = x.storyboard; sourceTree = "<group>"; };
 		EB07C65F2502C29D004F2D95 /* FollowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 		EB0A4459250FA64C00864D80 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				9FE54E3424F42102006471BF /* SignUpModel.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -388,7 +385,6 @@
 				EBC0EDCA24E28C8700FFFF3F /* MainHomeViewController.swift in Sources */,
 				EBC1EA1B24ECADB700D340E0 /* PostCaringModel.swift in Sources */,
 				EBA5AC8124DD456100C8F343 /* TestViewModel.swift in Sources */,
-				9FE54E3524F42102006471BF /* SignUpModel.swift in Sources */,
 				EBBDFDF424EE5B66003C75BF /* HTTPClient.swift in Sources */,
 				EB0A445B250FA69C00864D80 /* SignUpModel.swift in Sources */,
 				EBC0EDCC24E2B16900FFFF3F /* MainHomeModel.swift in Sources */,
