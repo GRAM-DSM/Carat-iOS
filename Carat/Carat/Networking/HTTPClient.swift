@@ -28,6 +28,10 @@ class HTTPClient: HTTPClientProvider {
     }
     
     func post(_ api: NetworkingAPI) -> DataRequest {
+        print(baseURI+api.path)
+        print(api.parameters)
+        print(api.headers)
+        
         return AF.request(baseURI + api.path, method: .post, parameters: api.parameters, encoding: URLEncoding.default, headers: api.headers, interceptor: nil)
     }
 

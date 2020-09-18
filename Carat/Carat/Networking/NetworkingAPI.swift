@@ -41,7 +41,7 @@ enum NetworkingAPI {
     var path: String {
         switch self {
         case .Login, .renewalToken:
-            return "/user/auth/"
+            return "/user/auth"
         case .signUp, .deleteUser:
             return "/user/"
         case .timeLine, .timeLineOfProfile:
@@ -97,6 +97,7 @@ enum NetworkingAPI {
         case .signUp(let name, let email, let password):
             return ["name": name, "email": email, "password":password]
         case .Login(let password, let email):
+            print(["password": password, "email": email])
             return ["password": password, "email": email]
         case .timeLine(let size, let last_caring_id):
             return ["size": size, "last_caring_id": last_caring_id]

@@ -46,9 +46,11 @@ class LogInController: UIViewController {
     }
     
     @IBAction func moveNext(_ sender: Any) {
-        guard let email = emailLabel.text else {return}
-        guard let password = passwordLable.text else {return}
+        guard let email = emailTextfield.text else {return}
+        guard let password = passwordTextfield.text else {return}
         
+        print(email)
+        print(password)
         login(email: email, password: password)
     }
     
@@ -56,12 +58,11 @@ class LogInController: UIViewController {
         httpclient.post(.Login(password, email)).responseJSON(completionHandler: { (response) in
             switch response.response?.statusCode {
             case 200:
+                print("success")
                 guard let value = response.data else { return }
                 guard let model = try? JSONDecoder().decode(LogInModel.self, from: value) else { return }
                 
                 self.model = model
-                guard  let move = self.storyboard?.instantiateViewController(withIdentifier: "MainHomeViewController") else { return }
-                       self.present(move, animated: true)
             case 400:
                 print("Bad Request")
             case 403:
