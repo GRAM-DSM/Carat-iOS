@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xge-mQ-Dme">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xge-mQ-Dme">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -238,6 +238,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="selectSignUp:" destination="a8p-LA-gfg" eventType="touchUpInside" id="TiE-qv-XGj"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -288,7 +291,7 @@
         <!--Log In Controller-->
         <scene sceneID="whl-Y4-Wxk">
             <objects>
-                <viewController id="qYX-r6-ygP" customClass="LogInController" customModule="Carat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="qYX-r6-ygP" customClass="LogInController" customModule="Carat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fIo-IQ-pvw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -379,6 +382,10 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="moveNext:" destination="qYX-r6-ygP" eventType="touchUpInside" id="Edt-42-3PZ"/>
+                                    <segue destination="YMA-26-erb" kind="show" id="RbB-VH-TL5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -419,6 +426,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YnA-mv-YJX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1953.6231884057972" y="495.53571428571428"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="WPf-kh-Hc2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainHome" referencedIdentifier="Main" id="YMA-26-erb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Yp7-eO-eyb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ckW-lN-hbW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2662" y="496"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UCE-Z5-1UN">

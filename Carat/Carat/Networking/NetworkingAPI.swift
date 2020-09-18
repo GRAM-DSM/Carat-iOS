@@ -10,14 +10,14 @@ import Foundation
 import Alamofire
 
 enum NetworkingAPI {
-    case Login(_ email: String, _ password: String)
+    case Login(_ password: String, _ email: String)
     case renewalToken
     case signUp(_ name: String, _ email: String, _ password: String)
     case deleteUser
     case timeLine(_ size: Int, _ base_time: String)
     case timeLineOfProfile(_ email: String, _ size: Int, _ base_time: String) // ?
     
-    case createCaring(_ tweet: String, image: [String?])
+    case createCaring(_ caring: String, image: [String?])
     case detailCaring(_ id: String)
     case deleteCaring(_ id: String)
     case reviseCaring(_ id: String)
@@ -43,7 +43,7 @@ enum NetworkingAPI {
         case .Login, .renewalToken:
             return "/user/auth"
         case .signUp, .deleteUser:
-            return "/user"
+            return "/user/"
         case .timeLine, .timeLineOfProfile:
             return "/timeline"
         case .createCaring:
@@ -68,9 +68,9 @@ enum NetworkingAPI {
     }
     
     //MARK: headers
-    var headers: [String: String]? {
+    var headers: HTTPHeaders? {
         switch self {
-        case .signIn:
+        case .signUp, .Login:
             return nil
             
         case .renewalToken:
@@ -92,18 +92,19 @@ enum NetworkingAPI {
     }
     
     //MARK: parameters
-    var parameters: [String: Any]{
+    var parameters: [String : Any] {
         switch self {
         case .signUp(let name, let email, let password):
-            return ["name": name, "email": email, "password": password]
-        case .Login(let email, let password):
-            return ["email": email, "password": password]
+            return ["name": name, "email": email, "password":password]
+        case .Login(let password, let email):
+            print(["password": password, "email": email])
+            return ["password": password, "email": email]
         case .timeLine(let size, let last_caring_id):
             return ["size": size, "last_caring_id": last_caring_id]
         case .timeLineOfProfile(let email, let size, let last_caring_id):
             return ["email": email, "size": size, "last_caring_id": last_caring_id]
-        case .createCaring(let caring):
-            return ["caring": caring]
+        case .createCaring(let caring, let image):
+            return ["caring": caring, "image":image]
         case .createRecaring(let id), .cancleRecaring(let id):
             return ["id": id]
         default:
@@ -111,16 +112,3 @@ enum NetworkingAPI {
         }
     }
 }
-
-//토큰은 잘 모르겠다 지수가 공부해줘서 나한테 알려줘~
-struct Token {
-    static var token: String?{
-        get{
-            return UserDefaults.standard.string(forKey: "Token")
-        }
-        set{
-            UserDefaults.standard.set(newValue, forKey: "Token")
-        }
-    }
-}
-
