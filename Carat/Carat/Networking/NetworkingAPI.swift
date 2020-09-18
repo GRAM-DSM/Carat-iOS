@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 enum NetworkingAPI {
-    case Login(_ email: String, _ password: String)
+    case Login(_ password: String, _ email: String)
     case renewalToken
     case signUp(_ name: String, _ email: String, _ password: String)
     case deleteUser
@@ -41,9 +41,9 @@ enum NetworkingAPI {
     var path: String {
         switch self {
         case .Login, .renewalToken:
-            return "/user/auth"
+            return "/user/auth/"
         case .signUp, .deleteUser:
-            return "/user"
+            return "/user/"
         case .timeLine, .timeLineOfProfile:
             return "/timeline"
         case .createCaring:
@@ -70,7 +70,7 @@ enum NetworkingAPI {
     //MARK: headers
     var headers: HTTPHeaders? {
         switch self {
-        case .signUp:
+        case .signUp, .Login:
             return nil
             
         case .renewalToken:
@@ -96,8 +96,8 @@ enum NetworkingAPI {
         switch self {
         case .signUp(let name, let email, let password):
             return ["name": name, "email": email, "password":password]
-        case .Login(let email, let password):
-            return ["email": email, "password": password]
+        case .Login(let password, let email):
+            return ["password": password, "email": email]
         case .timeLine(let size, let last_caring_id):
             return ["size": size, "last_caring_id": last_caring_id]
         case .timeLineOfProfile(let email, let size, let last_caring_id):

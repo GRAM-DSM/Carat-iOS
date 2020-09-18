@@ -382,6 +382,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="moveNext:" destination="qYX-r6-ygP" eventType="touchUpInside" id="Edt-42-3PZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

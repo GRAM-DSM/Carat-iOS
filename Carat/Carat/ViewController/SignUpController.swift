@@ -54,20 +54,14 @@ class SignUpController: UIViewController {
     }
     
     func signUp(name: String, email: String, password: String){
-        httpClient.post(.signUp(name, email, password)).responseJSON(completionHandler: { resp in
-            switch resp.response?.statusCode {
+        httpClient.post(.signUp(name, email, password)).responseJSON(completionHandler: { response in
+            switch response.response?.statusCode {
             case 201:
-                print("아이구야")
-            case 400:
-                print("Bad Request")
-            case 409:
-                print("Conflict")
+                print("success")
             case 500:
                 print("500 Error")
             default:
-                print("default")
+                print("?")
             }})
-        }
     }
-
-
+}

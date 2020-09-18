@@ -22,7 +22,7 @@ class LogInController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     
     let httpclient = HTTPClient()
-    
+    private var model: LogInModel?
     
     override func viewDidLoad() {
         
@@ -31,12 +31,9 @@ class LogInController: UIViewController {
         
         self.textfieldBorderlineStyle(emailTextfield)
         self.textfieldBorderlineStyle(passwordTextfield)
-        
-        
     }
     
     func textfieldBorderlineStyle(_ nameOfTextField: UITextField) {
-        
         let border = CALayer()
         let width = CGFloat(1.0)
         
@@ -49,17 +46,22 @@ class LogInController: UIViewController {
     }
     
     @IBAction func moveNext(_ sender: Any) {
-        guard  let move = self.storyboard?.instantiateViewController(withIdentifier: "MainHomeViewController") else { return }
-        self.present(move, animated: true)
+        guard let email = emailLabel.text else {return}
+        guard let password = passwordLable.text else {return}
+        
+        login(email: email, password: password)
     }
     
     func login(email : String, password: String) {
-        httpclient.post(NetworkingAPI.Login(email, password)).responseJSON(completionHandler: {
-            [weak self] (response) in
+        httpclient.post(.Login(password, email)).responseJSON(completionHandler: { (response) in
             switch response.response?.statusCode {
             case 200:
                 guard let value = response.data else { return }
                 guard let model = try? JSONDecoder().decode(LogInModel.self, from: value) else { return }
+                
+                self.model = model
+                guard  let move = self.storyboard?.instantiateViewController(withIdentifier: "MainHomeViewController") else { return }
+                       self.present(move, animated: true)
             case 400:
                 print("Bad Request")
             case 403:

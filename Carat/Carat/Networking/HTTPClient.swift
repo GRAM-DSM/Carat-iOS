@@ -28,7 +28,7 @@ class HTTPClient: HTTPClientProvider {
     }
     
     func post(_ api: NetworkingAPI) -> DataRequest {
-        return AF.request(baseURI + api.path, method: .post, parameters: api.parameters, encoding: JSONEncoding.prettyPrinted, headers: nil, interceptor: nil)
+        return AF.request(baseURI + api.path, method: .post, parameters: api.parameters, encoding: URLEncoding.default, headers: api.headers, interceptor: nil)
     }
 
     func put(_ api: NetworkingAPI) -> DataRequest {
@@ -36,7 +36,7 @@ class HTTPClient: HTTPClientProvider {
     }
     
     func delete(_ api: NetworkingAPI) -> DataRequest {
-        return AF.request(baseURI + api.path, method: .put, parameters: api.parameters, encoding: JSONEncoding.prettyPrinted, headers: api.headers, interceptor: nil)
+        return AF.request(baseURI + api.path, method: .delete, parameters: api.parameters, encoding: JSONEncoding.prettyPrinted, headers: api.headers, interceptor: nil)
     }
 
 }
